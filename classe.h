@@ -1,0 +1,141 @@
+/*
+Disciplina: Linguagem de Programação I
+Professor: Silvio
+Aluno: Odilon Júlio dos Santos
+
+Atividade: CORRIDA DOS SAPOS
+===========================================================================
+*/
+
+
+#ifndef CLASSE_H_INCLUDED
+#define CLASSE_H_INCLUDED
+
+#include <string>
+#include <random>
+#include <list>
+
+using namespace std;
+
+class Empresa{
+
+public:
+	string nome;
+	int cnpj;
+	list<string> funcionarios; //lista de funcionarios
+
+	static int distanciaTotal; // Atributo público estático.
+	static int getDistanciaTotal();
+	int getIdentificador();
+	int getDistanciaPercorrida();
+	int getQuantidadePulos();
+	void setIdentificador(int id);
+	void setDistanciaPercorrida(int dp);
+	void setQuantidadePulos(int qp);
+	void setPulo(int pl);
+	int getPulo();
+	void pular();
+	string getEspecie();
+	void setEspecie(string nome);
+	Sapo(int sp); // Método Construtor
+	~Sapo(); // Método Destrutor
+
+private:
+	int identificador; //Atributo privado para identificar o sapo.
+	int distanciaPercorrida; // Atributo privado para armazenar a distância percorrida por um sapo.
+	int quantidadePulos; // Atributo privado para armazenar o número de pulos efetuados por um sapo.
+	int pulo;
+	string especie;
+	random_device rd;
+	default_random_engine gen;
+	uniform_int_distribution<>dis;
+};
+
+class Funcionario(){
+	public:
+		string nome;
+		float salario;
+		//data
+	private:
+
+
+};
+
+class Data(){
+	//ver no link do arquivo do lab
+}
+
+// MÉTODO CONSTRUTOR // ====================
+Sapo::Sapo(int sp):rd(), gen(rd()), dis(1, 7){
+	
+	setDistanciaPercorrida(0);
+	setQuantidadePulos(0);
+	setPulo(round(dis(gen)));
+	
+	setIdentificador(sp);
+	
+	if (identificador == 1)
+	{
+		setEspecie("Sapo Cururu");
+	}
+	else if (identificador == 2)
+	{
+		setEspecie("Sapo Boi");
+	}
+	else if (identificador == 3)
+	{
+		setEspecie("Sapo Brejeiro");
+	}
+}
+// MÉTODO DESTRUTOR // =====================
+Sapo::~Sapo(){
+	//Destrutor do método construtor Sapo.
+}
+// MÉTODO QUE FAZ O SAPO PULAR // ==========
+void Sapo::pular(){
+	switch(Sapo::getDistanciaPercorrida() < Sapo::getDistanciaTotal()){
+		case true:
+			distanciaPercorrida = distanciaPercorrida + getPulo();
+			quantidadePulos += 1;
+
+		case false:
+			break;
+	}
+}
+// MÉTODOS GETTERS // ======================
+int Sapo::getDistanciaTotal(){
+	return distanciaTotal;
+}
+int Sapo::getPulo(){
+	return pulo;
+}
+string Sapo::getEspecie(){
+	return especie;
+}
+int Sapo::getDistanciaPercorrida(){
+	return distanciaPercorrida;
+}
+int Sapo::getQuantidadePulos(){
+	return quantidadePulos;
+}
+int Sapo::getIdentificador(){
+	return identificador;
+}
+
+//MÉTODOS SETTERS//=========================
+void Sapo::setPulo(int pl){
+	pulo = pl;
+}
+void Sapo::setEspecie(string nome){
+	especie = nome;
+}
+void Sapo::setIdentificador(int id){
+	identificador = id;
+}
+void Sapo::setDistanciaPercorrida(int dp){
+	distanciaPercorrida = dp;
+}
+void Sapo::setQuantidadePulos(int qp){
+	quantidadePulos = qp;
+}
+#endif // CLASSE_H_INCLUDED
