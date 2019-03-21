@@ -113,7 +113,7 @@ void Sapo::pular(){
 // MÉTODOS GETTERS // ======================
 	
 string Empresa::getFuncionarios(string nome){
-	return funcionario[nome];
+	return funcionario[nome];// verificar a sintaxe...
 }
 	
 	
