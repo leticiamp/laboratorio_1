@@ -1,9 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
 Professor: Silvio
-Aluno: Odilon Júlio dos Santos
+Alunos: Letícia Moura e Odilon Júlio
 
-Atividade: CORRIDA DOS SAPOS
+Atividade: Empresa
 ===========================================================================
 */
 
