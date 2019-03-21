@@ -60,7 +60,7 @@ class Funcionario(){
 	private:
 
 
-};*/
+};
 /*
 class Data(){
 	//ver no link do arquivo do lab
@@ -124,8 +124,8 @@ int Sapo::getDistanciaTotal(){
 int Sapo::getPulo(){
 	return pulo;
 }
-string Sapo::getEspecie(){
-	return especie;
+string Sapo::getEspecie()
+{	return especie;
 }
 int Sapo::getDistanciaPercorrida(){
 	return distanciaPercorrida;
@@ -139,7 +139,7 @@ int Sapo::getIdentificador(){
 */
 //MÉTODOS SETTERS//=========================
 
-void Empresa::string setFuncionarios(string nome){
+void Empresa::string setFuncionarios(string nmoe){
 	// criar um algoritmo para criar um funcionário, chamando a classe...
 	
 	
