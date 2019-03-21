@@ -13,59 +13,61 @@ Atividade: Empresa
 
 #include <string>
 #include <random>
-#include <list>
+#include <vector>
 
 using namespace std;
 
 class Empresa{
 
 public:
-	string nome;
-	int cnpj;
-	list<string> funcionarios; //lista de funcionarios
+	string getFuncionarios();
+	string setFuncionarios();
 
-	static int distanciaTotal; // Atributo público estático.
-	static int getDistanciaTotal();
-	int getIdentificador();
-	int getDistanciaPercorrida();
-	int getQuantidadePulos();
-	void setIdentificador(int id);
-	void setDistanciaPercorrida(int dp);
-	void setQuantidadePulos(int qp);
-	void setPulo(int pl);
-	int getPulo();
-	void pular();
-	string getEspecie();
-	void setEspecie(string nome);
-	Sapo(int sp); // Método Construtor
-	~Sapo(); // Método Destrutor
+	//static int distanciaTotal; // Atributo público estático.
+	//static int getDistanciaTotal();
+	//int getDistanciaPercorrida();
+	//int getQuantidadePulos();
+	//void setIdentificador(int id);
+	//void setDistanciaPercorrida(int dp);
+	//void setQuantidadePulos(int qp);
+	//void setPulo(int pl);
+	//int getPulo();
+	//void pular();
+	//string getEspecie();
+	//void setEspecie(string nome);
+	Empresa(); // Método Construtor para as empresas.
+	~Empresa(); // Método Destrutor para as empresas.
 
 private:
-	int identificador; //Atributo privado para identificar o sapo.
-	int distanciaPercorrida; // Atributo privado para armazenar a distância percorrida por um sapo.
-	int quantidadePulos; // Atributo privado para armazenar o número de pulos efetuados por um sapo.
-	int pulo;
-	string especie;
-	random_device rd;
-	default_random_engine gen;
-	uniform_int_distribution<>dis;
+	string nome;
+	int cnpj;
+	vector<string> funcionarios; //lista de funcionarios
+	//int identificador; //Atributo privado para identificar o sapo.
+	//int distanciaPercorrida; // Atributo privado para armazenar a distância percorrida por um sapo.
+	//int quantidadePulos; // Atributo privado para armazenar o número de pulos efetuados por um sapo.
+	//int pulo;
+	//string especie;
+	//random_device rd;
+	//default_random_engine gen;
+	//uniform_int_distribution<>dis;
 };
 
 class Funcionario(){
 	public:
 		string nome;
 		float salario;
-		//data
+		//inserir uma classe para a data aqui...
 	private:
 
 
-};
-
+};*/
+/*
 class Data(){
 	//ver no link do arquivo do lab
 }
+*/
 
-// MÉTODO CONSTRUTOR // ====================
+/*// MÉTODO CONSTRUTOR // ====================
 Sapo::Sapo(int sp):rd(), gen(rd()), dis(1, 7){
 	
 	setDistanciaPercorrida(0);
@@ -87,10 +89,14 @@ Sapo::Sapo(int sp):rd(), gen(rd()), dis(1, 7){
 		setEspecie("Sapo Brejeiro");
 	}
 }
+*/
 // MÉTODO DESTRUTOR // =====================
+/*
 Sapo::~Sapo(){
 	//Destrutor do método construtor Sapo.
 }
+*/
+/*	
 // MÉTODO QUE FAZ O SAPO PULAR // ==========
 void Sapo::pular(){
 	switch(Sapo::getDistanciaPercorrida() < Sapo::getDistanciaTotal()){
@@ -102,7 +108,16 @@ void Sapo::pular(){
 			break;
 	}
 }
+*/
+
 // MÉTODOS GETTERS // ======================
+	
+string Empresa::getFuncionarios(string nome){
+	return funcionario[nome];
+}
+	
+	
+	/*
 int Sapo::getDistanciaTotal(){
 	return distanciaTotal;
 }
@@ -121,8 +136,15 @@ int Sapo::getQuantidadePulos(){
 int Sapo::getIdentificador(){
 	return identificador;
 }
-
+*/
 //MÉTODOS SETTERS//=========================
+
+void Empresa::string setFuncionarios(string nome){
+	// criar um algoritmo para criar um funcionário, chamando a classe...
+	
+	
+}
+	/*
 void Sapo::setPulo(int pl){
 	pulo = pl;
 }
@@ -138,4 +160,5 @@ void Sapo::setDistanciaPercorrida(int dp){
 void Sapo::setQuantidadePulos(int qp){
 	quantidadePulos = qp;
 }
+*/
 #endif // CLASSE_H_INCLUDED
