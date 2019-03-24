@@ -10,19 +10,28 @@ Alunos: Letícia Moura e Odilon Júlio
 
 #include "funcionario.h"
 
+MAXIMO_DE_FUNCIONARIOS 50;
+
 class Empresa {
 	private:
-		string m_nome_empresa;
-		int m_cnpj;
-		int m_total_funcionarios;
+		string m_nomeEmpresa;
+		string m_cnpj;
+		//temos que instanciar aqui um objeto do tipo funcionario 
+		int m_totalFuncionarios;
+		int m_contador;
 	public:
-		Empresa(string nome_, int cnpj_);
+		Empresa(string nome_, string cnpj_);
 		~Empresa();
 
-		string getNome_empresa();
-		int getCnpj();
-		int getTotalFuncionarios();
-	
-};
+		string getNomeEmpresa();
+		string getCnpj();
 
-#endif
+		void aumentaSalario(float taxaAumento);
+		void informaFuncionarios();
+
+		bool contrataFuncionario(string nome_); // Cria/adiciona funcionários.
+		bool demiteFuncionario(string nome_); // Exclui funcionário.
+};	
+
+#endif // EMPRESA_H
+

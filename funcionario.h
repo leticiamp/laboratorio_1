@@ -11,22 +11,25 @@ Alunos: Letícia Moura e Odilon Júlio
 #include <string>
 #include "data.h"
 
-using std::string;
+using namespace std;
 
 class Funcionario() {
 	private:
 		string m_nome;
 		float m_salario;
-		Data m_admissao;
+		Data m_admissao; // Instancia um objeto da classe Data.
 	public:
 		string getNome();
 		float getSalario();
-		Data getAdimissao();
+		Data getAdmissao();
 
+		Funcionario();
 		Funcionario(string nome_, float salario_, Data admissao_);
 		~Funcionario();
 
-		void statusSalario(float porcentagem);
+		void statusSalario(float porcentagem_);
+
+
 };
 
-#endif
+#endif // FUNCIONARIO_H
