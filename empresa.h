@@ -25,6 +25,7 @@ class Empresa {
 
 		string getNomeEmpresa();
 		string getCnpj();
+		int getM_totalFuncionarios();
 
 		void aumentaSalario(float taxaAumento);
 		void informaFuncionarios();

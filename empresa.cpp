@@ -19,7 +19,7 @@ Empresa::Empresa(): // Construtor padrão.
 					m_nomeEmpresa("Empty Name"),
 					m_totalFuncionarios(0)
 					{
-					m_contador = m_contador + 1;
+					m_contador += 1;
 }
 
 Empresa::Empresa(string nomeEmpresa_, string cnpjEmpresa_): // Construtor parametrizado.
@@ -27,7 +27,7 @@ Empresa::Empresa(string nomeEmpresa_, string cnpjEmpresa_): // Construtor parame
 					m_nomeEmpresa(cnpjEmpresa_),
 					m_totalFuncionarios(0)
 					{
-					m_contador = m_contador + 1;
+					m_contador += 1;
 }
 
 /* 
@@ -134,4 +134,9 @@ string Empresa::getCnpj(){
 	return m_cnpj;
 }
 
-//Faltam getters para mostrar os funcionários e o número de funcionários. 
+int getM_totalFuncionarios() {
+	return m_totalFuncionarios;
+}
+
+
+//Faltam getters para mostrar os funcionários
