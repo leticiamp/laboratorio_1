@@ -10,7 +10,7 @@ using namespace std;
 
 /* 
 ========================================
-MÉTODOS CONSTRUTORES DA CLASSE "EMPRESA"
+MÉTODOS CONSTRUTORES DA CLASSE "Empresa"
 ========================================
 */
 
