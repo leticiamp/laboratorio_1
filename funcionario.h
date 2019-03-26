@@ -17,7 +17,7 @@ class Funcionario() {
 	private:
 		string m_nome;
 		double m_salario;
-		Data m_admissao; // Instancia um objeto da classe Data.
+		Date m_admissao; // Instancia um objeto da classe Data.
 	public:
 		string getNome();
 		double getSalario();

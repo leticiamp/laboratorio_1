@@ -85,12 +85,164 @@ bool Date::valid() const {
 
 };
 
-bool //
+bool operator == (const Date& d1, const Date& d2){
+	//Verificação para igualdades.
+	if (!d1.valid()){
+		return FALSE;
+	};
+	if (!d2.valid()){
+		return FALSE;
+	};
+	if ((d1.day() == d2.day())
+		&& (d1.month() == d2.month())
+		&& (d1.year() == d2.year())){
+		return TRUE;
+	};
+	return FALSE;
+}
+bool operator != (const Date& d1, const Date& d2){
+	return !(d1 == d2);
+}
 
+bool operator < (const Date& d1, const Date& d2){
+	if (!d1.valid()){ // Sem significado.
+		return FALSE;
+	}
+	if (!d2.valid()){
+		return FALSE;
+	}
+	if (d1.year() < d2.year()){
+		return TRUE;
+	}
+	else if (d1.year() > d2.year()){
+		return FALSE;
+	}
+	else{ // Mesmo ano.
+		if (d1.month() < d2.month()){
+			return TRUE;
+		}
+		else if (d1.month() < d2.month()){
+			return TRUE;
+		}
+		else { //Mesmo mês.
+			if (d1.day() < d2.day()){
+				return TRUE;
+			}
+			else{
+				return FALSE;
+			}
+		}
+	}
+	return FALSE;
+}
 
+bool operator > (const Date& d1, const Date& d2){
+	if (d1 == d2) {
+		return FALSE;
+	}
+	if (d1 < d2){
+		return FALSE;
+	}
+	return TRUE;
+}
 
+bool operator <= (const Date& d1, const Date& d2){
+	if (d1 == d2){
+		return TRUE;
+	}
+	return (d1 < d2);
+}
 
+bool operator >= (const Date& d1, const Date& d2){
+	if (d1 == d2){
+		return TRUE;
+	}
+	return (d1 > d2);
+}
 
+inline Date next_date(const Date& d){
+	Date ndat;
+	if (!d.valid()){
+		return ndat;
+	}
+	ndat = Date((d.day() + 1), d.month(), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(1, (d.month() + 1), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(1 , 1, (d.year() + 1));
+	return ndat;
+}
+
+inline Date previous_date(const Date& d){
+	Date ndat;
+	if (!d.valid()){ // Retorna zero.
+		return ndat;
+	}
+	ndat = Date((d.day() - 1), d.month(), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(31, (d.month() - 1), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(30, (d.month() - 1), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(29, (d.month() - 1), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(28, (d.month() - 1), d.year());
+	if (ndat.valid()){
+		return ndat;
+	}
+	ndat = Date(31, 12, (d.year() - 1));
+		return ndat;
+}
+
+Date Date::operator ++(int){
+	Date d = *this;
+	*this = next_date(d);
+	return d;
+} 
+
+Date Date::operator ++(){ 
+	*this = next_date(*this);
+	return *this;
+}
+
+Date Date::operator --(int){
+	Date d = *this;
+	*this = previous_date(*this);
+	return d;
+}
+
+Date Date::operator --(){
+	*this = previous_date(*this);
+	return *this;
+}
+
+inline long long_date(const Date& d){
+	if (d.valid()){
+		return d.year() * 10000 + d.month() * 100 + d.day();
+	}
+}
+	
+ostream & operator << (ostream& os, const Date& d){
+	if (d.valid()){
+		os << " " << long_date(d) << " ";
+	}
+	else { 
+		os << " invalid date "; 
+	}
+	return os;
+}
 
 
 
