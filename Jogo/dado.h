@@ -18,12 +18,12 @@ class Dado {
 public:
 	Dado(); // Método construtor.
 	int setJogar(); // Método que joga o dado e mostra o valor.
-	int getValor(); // Método que mostra o valor acumulado.
+	int getResultado(); // Método que mostra o valor acumulado.
 
 
 
 private:
-	int valor;
+	int resultado;
 	// Caracterização do lançamento randômico.
 	random_device rd; 
 	default_random_engine gen;
