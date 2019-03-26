@@ -1,4 +1,10 @@
-//QUESTAO 2 - LABORATORIO 1
+/*
+Disciplina: Linguagem de Programação I
+Professor: Silvio
+Alunos: Letícia Moura e Odilon Júlio
+LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
+===========================================================================
+*/
 
 #ifndef JOGADOR_H
 #define JOGADOR_H
