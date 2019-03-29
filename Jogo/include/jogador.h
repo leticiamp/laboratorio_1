@@ -12,14 +12,16 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 #include <string>
 #include "dado.h"
 
+using namespace std;
+
 enum Status{ATIVO, INATIVO, PARADO};
 
 class Jogador {
 private:
-	string m_nome; 
-	int m_pontos;
-	int m_alvo;
-	Status m_status;
+	string nome; 
+	int pontos;
+	int alvo;
+	Status status;
 
 public:
 	string getNome();
@@ -27,8 +29,8 @@ public:
 	int getAlvo();
 	Status getStatus();
 
-	void Jogar(Dado &d1, Dado &d2);
-	bool JogarAgora();
+	void JogarDados(Dado &d1, Dado &d2);
+	bool JogarAgora(); //retorna a escolha do jogador para jogar ou nao a partida
 
 	Jogador();
 	Jogador(string nome_);

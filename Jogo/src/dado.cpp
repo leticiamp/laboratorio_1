@@ -9,6 +9,8 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 #include "dado.h"
 
+using namespace std;
+
 /*
 ==================================
 MÉTODO CONSTRUTOR DA CLASSE "Dado"

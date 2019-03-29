@@ -24,8 +24,9 @@ private:
 public:
 	int getM_total_jogadores();
 	int getJogadoresAtivos();
-	void resultado();
+	int getM_partidas();
 
+	void resultado();
 	void novapartida();
 	void run();
 	void addJogador(Jogador *novo_);
