@@ -11,13 +11,16 @@ INC = ./include
 
 CPPFLAGS = -Wall -pedantic -std=c++11 -I$(INC)
 
-OBJS = $(OBJ)/funcionario.o $(OBJ)/empresa.o $(OBJ)/data.o $(OBJ)/main.o
+OBJS =  $(OBJ)/data.o $(OBJ)/funcionario.o $(OBJ)/empresa.o $(OBJ)/cadastro.o $(OBJ)/main.o
 
 all: $(PROG)
 	$(PROG)
 
 $(PROG): $(OBJS)
 	$(CC) $(CPPFLAGS) -o $(PROG) $(OBJS)
+
+$(OBJ)/cadastro.o: $(INC)/cadastro.h
+	$(CC) $(CPPFLAGS) -c $(SRC)/cadastro.cpp -o $(OBJ)/cadastro.o
 
 $(OBJ)/funcionario.o: $(INC)/funcionario.h
 	$(CC) $(CPPFLAGS) -c $(SRC)/funcionario.cpp -o $(OBJ)/funcionario.o
@@ -31,6 +34,8 @@ $(OBJ)/data.o: $(INC)/data.h
 
 $(OBJ)/main.o: $(SRC)/main.cpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/main.cpp -o $(OBJ)/main.o
+
+
 
 clean: 
 	rm -f $(BIN)/*

@@ -6,6 +6,7 @@ Alunos: Letícia Moura e Odilon Júlio
 */
 
 #include "empresa.h"
+#include "funcionario.h"
 using namespace std;
 
 /* 
@@ -18,19 +19,19 @@ bool Empresa::contrataFuncionario(Funcionario *novoFuncionario){
 	if (totalFuncionarios <= MAXIMO_DE_FUNCIONARIOS){
 		int i = 0;
 		while(i < totalFuncionarios){ // Pesquisa sequencialmente pra saber se o funcionário já está contratado.
-			if ((*novoFuncionario) == (todosOsFuncionarios[i])){
+			if (*novoFuncionario == *todosOsFuncionarios[i]){
 				cout << "Esse funcionário já trabalha na empresa!" << endl;
 				delete novoFuncionario;
-				return FALSE;
+				return false;
 			}
 			i++;
 		}
 		totalFuncionarios++; // Contabiliza uma contratação.
 		todosOsFuncionarios[totalFuncionarios] = novoFuncionario; //Efetivamente, a empresa contrata.
-		return TRUE;	
+		return true;	
 	}
 	else{ // Se passar do número limite, não contrata.
-		return FALSE;
+		return true;
 	}
 }
 
@@ -41,15 +42,15 @@ MÉTODO PARA DEMITIR FUNCIONÁRIO
 */
 
 bool Empresa::demiteFuncionario(string nomeFuncionario){ // Pesquisa pelo nome, dentre os funcionários, para demití-lo.
-	bool demitido = FALSE;
+	bool demitido = false;
 	for (int i = 0; i < totalFuncionarios; i++)
 	{
 		if ((todosOsFuncionarios[i]->getNome()) == nomeFuncionario){
 			totalFuncionarios--;
 			delete todosOsFuncionarios[i];
-			demitido = TRUE;
+			demitido = true;
 		}
-		if (demitido == TRUE){ // Reposiciona os funcionários, a partir do demitido, para uma posição anterior na lista.
+		if (demitido == true){ // Reposiciona os funcionários, a partir do demitido, para uma posição anterior na lista.
 			todosOsFuncionarios[i] = todosOsFuncionarios[i+1];
 		}
 	}
@@ -63,7 +64,7 @@ MÉTODO PARA MOSTRAR TODOS OS FUNCIONÁRIOS DE UMA EMPRESA
 */
 // Método que lista todos os funcionários de uma referida empresa.
 void Empresa::informaFuncionarios(){
-	cout << "A empresa " << m_nomeEmpresa <<
+	cout << "A empresa " << nomeDestaEmpresa <<
 	" possui os seguintes funcionários:" << endl;
 	int i = 0;
 	while (i < totalFuncionarios)
@@ -79,7 +80,7 @@ MÉTODO PARA AUMENTAR O SALÁRIO PERCENTUALMENTE
 DE TODOS OS FUNCIONÁRIOS DE UMA MESMA EMPRESA
 ==============================================
 */
-void Empresa::alteraSalarioEmpresa(float taxaAumento){
+void Empresa::alteraSalarioEmpresa(float taxaPercentual){
 	int i = 0;
 	while (i < totalFuncionarios)
 	{
@@ -98,26 +99,29 @@ string Empresa::getCnpj(){
 	return cnpjDestaEmpresa;
 }
 
-int Empresa::getTotalFuncionarios() {
+int Empresa::getTotalEmpresas() {
+	return contadorDeEmpresas;
+}
+
+int Empresa::getTotalFuncionarios(){
 	return totalFuncionarios;
 }
-
-Funcionario **Empresa::informaFuncionarios(){
+/*
+Funcionario** Empresa::getInformaFuncionarios(){
 	return todosOsFuncionarios;
 }
-
+*/
 /* 
 ========================================
 MÉTODOS CONSTRUTORES DA CLASSE "Empresa"
 ========================================
 */
-
 Empresa::Empresa(): // Construtor padrão. 
 					cnpjDestaEmpresa("00.000.000/0000-00"),
 					nomeDestaEmpresa("Empty Name"),
 					totalFuncionarios(0)
 					{
-					contadorDeFuncionarios += 1;
+					contadorDeEmpresas++;
 }
 
 Empresa::Empresa(string nomeEmpresa, string cnpjEmpresa): // Construtor parametrizado.
@@ -125,7 +129,7 @@ Empresa::Empresa(string nomeEmpresa, string cnpjEmpresa): // Construtor parametr
 					nomeDestaEmpresa(cnpjEmpresa),
 					totalFuncionarios(0)
 					{
-					contadorDeFuncionarios += 1;
+					contadorDeEmpresas++;
 }
 
 /* 
@@ -138,8 +142,9 @@ Empresa::~Empresa(){ //Ao destruir a empresa, destrói também todos os seus fun
 	int i = 0;
 	while(i < totalFuncionarios){
 		i++;
-		delete totalFuncionarios[i-1];
+		delete todosOsFuncionarios[i-1];
 	}
+	contadorDeEmpresas--;
 }
 
 /* 

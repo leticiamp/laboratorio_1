@@ -1,3 +1,10 @@
+/*
+Disciplina: Linguagem de Programação I
+Professor: Silvio
+Alunos: Letícia Moura e Odilon Júlio
+===========================================================================
+*/
+
 #ifndef _DATA_H_
 #define _DATA_H_
 
@@ -23,19 +30,19 @@ public:
 	void set_month (const int& month);
 	void set_year (const int& year);
 
-	date operator ++(); // prefix
-	date operator ++(int); // postfix
-	date operator --(); // prefix
-	date operator --(int); // postfix
+	Date operator ++(); // prefix
+	Date operator ++(int); // postfix
+	Date operator --(); // prefix
+	Date operator --(int); // postfix
 };
 
-bool operator == (const date&, const date&); //comparison operators
-bool operator != (const date&, const date&);
-bool operator < (const date&, const date&);
-bool operator > (const date&, const date&);
-bool operator <= (const date&, const date&);
-bool operator >= (const date&, const date&);
+bool operator == (const Date&, const Date&); //comparison operators
+bool operator != (const Date&, const Date&);
+bool operator < (const Date&, const Date&);
+bool operator > (const Date&, const Date&);
+bool operator <= (const Date&, const Date&);
+bool operator >= (const Date&, const Date&);
 
-ostream& operator << (ostream& os, const date& d); //output operator
+ostream& operator << (ostream& os, const Date& d); //output operator
 
-#endif
+#endif // _DATA_H_

@@ -5,8 +5,8 @@ Alunos: Letícia Moura e Odilon Júlio
 ===========================================================================
 */
 
-#ifndef FUNCIONARIO_H
-#define FUNCIONARIO_H
+#ifndef _FUNCIONARIO_H_
+#define _FUNCIONARIO_H_
 
 #include <iostream>
 #include <string>
@@ -22,18 +22,17 @@ public:
 	Date getAdmissao(); // Método para mostrar a data de admissão do funcionário.
 	Funcionario(); // Método construtor padrão
 	// Método construtor parametrizado.
-	Funcionario(string nomeFuncionario, float salarioFuncionario, Data admissaoFuncionario); 
+	Funcionario(string nomeFuncionario, float salarioFuncionario, Date admissaoFuncionario); 
 	~Funcionario(); // Método destrutor.
 	void alteraSalario(float porcentagem); // Atualiza o salário percentualmente.
 	// Sobrecarga dos operadores '==' e '!=' para poder comparar dois objetos da classe Funcionario.
 	bool operator != (const Funcionario &funcionarioDiferente); 
 	bool operator == (const Funcionario &funcionarioDiferente);
 	// Método estático para mostrar o número total de funcionários (objetos) instanciados.
-	static int getNumeroDeFuncionarios();
-	/*
-	++++++++++ENTENDER E ADICIONAR LINHAS FRIENDS++++++++++++++
-	*/
-
+	static int getNumeroDeFuncionarios(); // Informa quantos são os funcionários.
+	// Sobrecarga de operadores de extração e inserção das classes "ostream" e "istream".
+	friend ostream& operator << (ostream& output, const Funcionario& algumFuncionario);
+	friend istream& operator >> (istream& input, Funcionario& algumFuncionario);
 private:
 	string nome; // Atributo para o nome do funcionário.
 	Date admissao; // Instancia um objeto data da classe Data.
@@ -42,4 +41,4 @@ private:
 
 };
 
-#endif // FUNCIONARIO_H
+#endif // _FUNCIONARIO_H_

@@ -6,6 +6,7 @@ Alunos: Letícia Moura e Odilon Júlio
 */
 
 #include "funcionario.h" // Chama o arquivo de cabeçalho que contém a classe Funcionário.
+using namespace std;
 
 /*
 =========================================
@@ -21,11 +22,11 @@ float Funcionario::getSalario() {
 	return salario;
 }
 
-Data Funcionario::getAdmissao() {
+Date Funcionario::getAdmissao() {
 	return admissao;
 }
 
-static int getNumeroDeFuncionarios(){
+int getNumeroDeFuncionarios(){
 	return contador;
 }
 /*
@@ -65,18 +66,36 @@ Funcionario::~Funcionario(){
 }
 
 /*
-=========================================
+===========================================
 IMPLEMENTAÇÃO DAS SOBRECARGAS DE OPERADORES
-=========================================
+===========================================
 */
-
-/////+++++++++++++ENTENDER E ADICIONAR O "STREAM" AQUI
-
-// Sobrecarrega operadores de comparação para permitir operação entre dois objetos da classe Funcionario.
-bool Funcionario::operator == (const Funcionario &funcionarioDiferente){
-	return (nome == funcionarioDiferente.nome);
-}
-
+/*
+ Sobrecarrega operadores de comparação para permitir operação entre
+dois objetos da classe Funcionario.
+*/
 bool Funcionario::operator != (const Funcionario &funcionarioDiferente){
-	return (nome != funcionarioDiferente.nome);
+	return (Funcionario->nome != funcionarioDiferente.nome);
 }
+bool Funcionario::operator == (const Funcionario &funcionarioDiferente){
+	return (Funcionario->nome == funcionarioDiferente.nome);
+}
+
+
+// Sobrecarga de operadores de extração e inserção.
+ostream& operator << (ostream& output, const Funcionario& algumFuncionario){
+	output  << algumFuncionario.nome << "  ---  "
+			<< algumFuncionario.salario << "  ---  "
+			<< algumFuncionario.admissao << endl;
+	return output;
+}
+
+istream& operator >> (istream& input, Funcionario& algumFuncionario){
+	cout << "Nome: "; getline(input, algumFuncionario.nome);
+	cout << "Salário: R$"; getline(input, algumFuncionario.salario);
+	cout << "Data de Admissão: "; getline(input, algumFuncionario.admissao);
+	return input;
+}
+
+
+

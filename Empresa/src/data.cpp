@@ -56,49 +56,49 @@ bool Date::valid() const {
 	// Apesar disso, é preciso uma checagem a mais no valor do ano.
 
 	if (year_ < 0){
-		return FALSE;
+		return false;
 	}
 	if(month_ > 12 || month_ < 1){
-		return FALSE;
+		return false;
 	}
 	if (day_ > 31 || day_ < 1){
-		return FALSE;
+		return false;
 	}
 	if ((day_ == 31 &&
 		(month_ == 2 || month_ == 4 || month_ == 6 || month_ == 9 || month_ == 11))){
-		return FALSE;
+		return false;
 	}
 	if (day_ == 30 && month_ == 2){
-		return FALSE;
+		return false;
 	}
 	if (year_ < 2000){
 		if ((day_ == 29 && month_ == 2) && !((year_ - 1900)%4 == 0)){
-			return FALSE;
+			return false;
 		}
 	}
 	if (year_ > 2000){
 		if ((day_ == 29 && month_ == 2) && !((year_ - 2000)%4 == 0)){
-			return FALSE;
+			return false;
 		}
 	}
-	return TRUE;
+	return true;
 
 };
 
 bool operator == (const Date& d1, const Date& d2){
 	//Verificação para igualdades.
 	if (!d1.valid()){
-		return FALSE;
+		return false;
 	};
 	if (!d2.valid()){
-		return FALSE;
+		return false;
 	};
 	if ((d1.day() == d2.day())
 		&& (d1.month() == d2.month())
 		&& (d1.year() == d2.year())){
-		return TRUE;
+		return true;
 	};
-	return FALSE;
+	return false;
 }
 bool operator != (const Date& d1, const Date& d2){
 	return !(d1 == d2);
@@ -106,56 +106,56 @@ bool operator != (const Date& d1, const Date& d2){
 
 bool operator < (const Date& d1, const Date& d2){
 	if (!d1.valid()){ // Sem significado.
-		return FALSE;
+		return false;
 	}
 	if (!d2.valid()){
-		return FALSE;
+		return false;
 	}
 	if (d1.year() < d2.year()){
-		return TRUE;
+		return true;
 	}
 	else if (d1.year() > d2.year()){
-		return FALSE;
+		return false;
 	}
 	else{ // Mesmo ano.
 		if (d1.month() < d2.month()){
-			return TRUE;
+			return true;
 		}
 		else if (d1.month() < d2.month()){
-			return TRUE;
+			return true;
 		}
 		else { //Mesmo mês.
 			if (d1.day() < d2.day()){
-				return TRUE;
+				return true;
 			}
 			else{
-				return FALSE;
+				return false;
 			}
 		}
 	}
-	return FALSE;
+	return false;
 }
 
 bool operator > (const Date& d1, const Date& d2){
 	if (d1 == d2) {
-		return FALSE;
+		return false;
 	}
 	if (d1 < d2){
-		return FALSE;
+		return false;
 	}
-	return TRUE;
+	return true;
 }
 
 bool operator <= (const Date& d1, const Date& d2){
 	if (d1 == d2){
-		return TRUE;
+		return true;
 	}
 	return (d1 < d2);
 }
 
 bool operator >= (const Date& d1, const Date& d2){
 	if (d1 == d2){
-		return TRUE;
+		return true;
 	}
 	return (d1 > d2);
 }
@@ -226,13 +226,15 @@ Date Date::operator --(int){
 Date Date::operator --(){
 	*this = previous_date(*this);
 	return *this;
-}
+};
 
-inline long long_date(const Date& d){
+inline long long_date(const Date& d)
+{
 	if (d.valid()){
 		return d.year() * 10000 + d.month() * 100 + d.day();
 	}
-}
+	return -1;
+};
 	
 ostream & operator << (ostream& os, const Date& d){
 	if (d.valid()){
