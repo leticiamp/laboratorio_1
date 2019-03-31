@@ -98,6 +98,9 @@ MÉTODO GETTERS (PARA MOSTRAR ALGUM ATRIBUTO)
 string Empresa::getCnpj(){
 	return cnpjDestaEmpresa;
 }
+string Empresa::getNomeEmpresa(){
+	return nomeDestaEmpresa;
+}
 
 int Empresa::getTotalEmpresas() {
 	return contadorDeEmpresas;

@@ -246,13 +246,13 @@ ostream & operator << (ostream& os, const Date& d){
 	return os;
 }
 /*
-istream& operator>> (istream& input, Date& algumaData(int& d, int& m, int& y)){
+istream& operator>> (istream& input, Date& algumaData(x, y, z)){
 	cout << "Dia: ";
-	input >> algumaData.set_day(d);
+	input >> algumaData(x);
 	cout << "Mês: ";
-	input >> algumaData.set_day(m);
+	input >> algumaData(y);
 	cout << "Ano: ";
-	input >> algumaData.set_day(y);
+	input >> algumaData(z);
 	return input;
 }
 */

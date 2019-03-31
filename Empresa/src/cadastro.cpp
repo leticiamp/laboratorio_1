@@ -194,17 +194,35 @@ void Cadastro::excluirEmpresa(){ // Método para remover uma referida empresa.
 	cout << "Qual empresa deseja excluir deste cadastro?"; getline(cin, nomeDaEmpresaAExcluir);
 	bool rearranjar = false;
 	int n = 0;
-	while(n < totalDeEmpresas){
-		if (empresas[n]->getNomeEmpresa() == nomeDaEmpresaAExcluir){
-			delete empresas[n];
+	/*
+	for (int i = 0; i < totalDeEmpresas; ++i)
+	{
+		if (empresas[i]->getNomeEmpresa() == nomeDaEmpresaAExcluir){
+			delete empresas[i];
 			totalDeEmpresas--;
-			rearranjar = false;
+			rearranjar = true;
 		}
 		if (rearranjar){
-			/*
-			Reposiciona as empresas que estavam a frente da empresa removida.
-			*/
-			empresas[n] = empresas[n+1];
+			empresas[i] = empresas[i+1];
+		}
+	}
+	if (rearranjar){
+		cout << "A Empresa " << nomeDaEmpresaAExcluir 
+			 << " foi excluída com sucesso.";
+	}
+	else{
+		cout << "A Empresa " << nomeDaEmpresaAExcluir
+			 << "não pode ser removida, pois não está cadastrada." ;
+	}
+	*/
+	while(n < totalDeEmpresas){
+		if(empresas[n]->getNomeEmpresa() == nomeDaEmpresaAExcluir){
+			delete empresas[n];
+			totalDeEmpresas--;
+			rearranjar = true;
+		}
+		if (rearranjar){		
+			empresas[n] = empresas[n+1]; //Reposiciona as empresas que estavam a frente da empresa removida.
 		}
 		n++;
 	}
