@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: data.h 
 ===========================================================================
 */
 
@@ -34,6 +36,8 @@ public:
 	Date operator ++(int); // postfix
 	Date operator --(); // prefix
 	Date operator --(int); // postfix
+	friend ostream& operator << (ostream& o, const Date& d); //output operator
+	friend istream& operator >> (istream& i, Date& d);
 };
 
 bool operator == (const Date&, const Date&); //comparison operators
@@ -42,7 +46,5 @@ bool operator < (const Date&, const Date&);
 bool operator > (const Date&, const Date&);
 bool operator <= (const Date&, const Date&);
 bool operator >= (const Date&, const Date&);
-
-ostream& operator << (ostream& os, const Date& d); //output operator
 
 #endif // _DATA_H_

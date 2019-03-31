@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: main.cpp 
 ===========================================================================
 */
 #include <iostream>
@@ -12,7 +14,7 @@ int Empresa:: contadorDeEmpresas = 0;
 
 int main(int argc, char const *argv[]){
 	
-	Cadastro *cadastrando = new Cadastro();
-	cadastrando->listaOpcaoInicial("\nEscolha uma das seguintes opções: \n");
+	Cadastro cadastrando;
+	cadastrando.listaOpcaoInicial("MENU PRINCIPAL");
 	return 0;
 }

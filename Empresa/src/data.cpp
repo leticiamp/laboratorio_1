@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: data.cpp 
 ===========================================================================
 */
 
@@ -18,37 +20,37 @@ Date::Date(const int& d, const int& m, const int& y){ // Construtor parametrizad
 	day_ = d;
 	month_ = m;
 	year_ = y; 
-};
+}
 
 Date::Date(){// Construtor padrão. (inline definitions)
 	year_ = 0;
 	month_ = 0;
 	day_ = 0;
-};
+}
 
 int Date::day() const{
 	return day_;
-};
+}
 
 int Date::month() const{
 	return month_;
-};
+}
 
 int Date::year() const{
 	return year_;
-};
+}
 
 void Date::set_day (const int& day){
 	Date::day_ = day;
-};
+}
 
 void Date::set_month (const int& month){
 	Date::month_ = month;
-};
+}
 
 void Date::set_year (const int& year){
 	Date::year_ = year;
-};
+}
 
 bool Date::valid() const {
 	// Esse método irá checar se a data fornecida é válida ou não.
@@ -83,7 +85,7 @@ bool Date::valid() const {
 	}
 	return true;
 
-};
+}
 
 bool operator == (const Date& d1, const Date& d2){
 	//Verificação para igualdades.
@@ -226,7 +228,7 @@ Date Date::operator --(int){
 Date Date::operator --(){
 	*this = previous_date(*this);
 	return *this;
-};
+}
 
 inline long long_date(const Date& d)
 {
@@ -234,7 +236,7 @@ inline long long_date(const Date& d)
 		return d.year() * 10000 + d.month() * 100 + d.day();
 	}
 	return -1;
-};
+}
 	
 ostream & operator << (ostream& os, const Date& d){
 	if (d.valid()){
@@ -246,6 +248,15 @@ ostream & operator << (ostream& os, const Date& d){
 	return os;
 }
 
+istream& operator >> ( istream& i, Date& d){
+	string algumData;
+	i.ignore();
+	getline(i, algumData);
+	d.day_ = atoi(algumData.substr(0, 2).c_str()); 
+    d.month_ = atoi(algumData.substr(3, 2).c_str()); 
+    d.year_ = atoi(algumData.substr(6, 4).c_str());
+	return i;
+}
 
 
 

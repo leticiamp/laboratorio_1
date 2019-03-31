@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: funcionario.cpp
 ===========================================================================
 */
 
@@ -18,16 +20,12 @@ string Funcionario::getNome() {
 	return nome;
 }
 
-float Funcionario::getSalario() {
+double Funcionario::getSalario() {
 	return salario;
 }
 
 Date Funcionario::getAdmissao() {
 	return admissao;
-}
-
-int getNumeroDeFuncionarios(){
-	return contador;
 }
 /*
 =========================================
@@ -38,6 +36,13 @@ MÉTODOS "SETTERS"
 void Funcionario::alteraSalario(float porcentagem) {
 	salario = salario * ((porcentagem/100) + 1);
 }
+/*
+void Funcionario::setAdmissao(const int& d, const int& m, const int& y){
+	admissao.set_day(d);
+	admissao.set_month(m);
+	admissao.set_year(y);
+}
+*/
 
 /*
 =========================================
@@ -52,12 +57,9 @@ Funcionario::Funcionario():
 }
 // Construtor parametrizado.
 Funcionario::Funcionario( string nomeFuncionario,
-						  float salarioFuncionario,
+						  double salarioFuncionario,
 						  Date admissaoFuncionario):
-	nome(nomeFuncionario),
-	salario(nomeFuncionario),
-	admissao(admissaoFuncionario) 
-	{
+	nome(nomeFuncionario), salario(salarioFuncionario), admissao(admissaoFuncionario){
 	contador++;
 }
 
@@ -74,28 +76,32 @@ IMPLEMENTAÇÃO DAS SOBRECARGAS DE OPERADORES
  Sobrecarrega operadores de comparação para permitir operação entre
 dois objetos da classe Funcionario.
 */
-bool Funcionario::operator != (const Funcionario &funcionarioDiferente){
-	return (Funcionario->nome != funcionarioDiferente.nome);
+bool Funcionario::operator!= (const Funcionario &funcionarioDiferente){
+	return !((*this) == funcionarioDiferente);
 }
-bool Funcionario::operator == (const Funcionario &funcionarioDiferente){
-	return (Funcionario->nome == funcionarioDiferente.nome);
+bool Funcionario::operator== (const Funcionario &funcionarioDiferente){
+	return (this->nome== funcionarioDiferente.nome);
 }
 
 
 // Sobrecarga de operadores de extração e inserção.
-ostream& operator << (ostream& output, const Funcionario& algumFuncionario){
+ostream& operator<< (ostream& output, const Funcionario& algumFuncionario){
 	output  << algumFuncionario.nome << "  ---  "
 			<< algumFuncionario.salario << "  ---  "
 			<< algumFuncionario.admissao << endl;
 	return output;
 }
 
-istream& operator >> (istream& input, Funcionario& algumFuncionario){
-	cout << "Nome: "; getline(input, algumFuncionario.nome);
-	cout << "Salário: R$"; getline(input, algumFuncionario.salario);
-	cout << "Data de Admissão: "; getline(input, algumFuncionario.admissao);
+istream& operator>> (istream& input, Funcionario& algumFuncionario){
+	cout << "Nome do Funcionário: ";
+	getline(input, algumFuncionario.nome);
+	cout << "Salário: R$ ";
+	input >> algumFuncionario.salario;
+	cout << "Data de Admissão: ";
+	input >> algumFuncionario.admissao;
 	return input;
 }
+
 
 
 

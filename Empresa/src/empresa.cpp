@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: empresa.cpp
 ===========================================================================
 */
 
@@ -98,6 +100,9 @@ MÉTODO GETTERS (PARA MOSTRAR ALGUM ATRIBUTO)
 string Empresa::getCnpj(){
 	return cnpjDestaEmpresa;
 }
+string Empresa::getNomeEmpresa(){
+	return nomeDestaEmpresa;
+}
 
 int Empresa::getTotalEmpresas() {
 	return contadorDeEmpresas;
@@ -117,16 +122,16 @@ MÉTODOS CONSTRUTORES DA CLASSE "Empresa"
 ========================================
 */
 Empresa::Empresa(): // Construtor padrão. 
-					cnpjDestaEmpresa("00.000.000/0000-00"),
 					nomeDestaEmpresa("Empty Name"),
+					cnpjDestaEmpresa("00.000.000/0000-00"),
 					totalFuncionarios(0)
 					{
 					contadorDeEmpresas++;
 }
 
 Empresa::Empresa(string nomeEmpresa, string cnpjEmpresa): // Construtor parametrizado.
-					cnpjDestaEmpresa(nomeEmpresa),
-					nomeDestaEmpresa(cnpjEmpresa),
+					nomeDestaEmpresa(nomeEmpresa),
+					cnpjDestaEmpresa(cnpjEmpresa),
 					totalFuncionarios(0)
 					{
 					contadorDeEmpresas++;
@@ -152,18 +157,18 @@ Empresa::~Empresa(){ //Ao destruir a empresa, destrói também todos os seus fun
 SOBRECARGA DE OPERADORES
 ====================================
 */
-ostream& operator << ( ostream& output, const Empresa& empresaTal){
-	output 	<< empresaTal.cnpjDestaEmpresa << "   ---    "
-			<< empresaTal.nomeDestaEmpresa << "   ---    "
-			<< empresaTal.totalFuncionarios << "funcionários contratados."
+ostream& operator<< ( ostream& output, const Empresa& empresaTal){
+	output 	<< empresaTal.nomeDestaEmpresa << "   ---   "
+			<< empresaTal.cnpjDestaEmpresa << "   ---   "
+			<< empresaTal.totalFuncionarios << " funcionário(s) contratado(s)."
 			<< endl;
 	return output;
 }
 
-istream& operator >> ( istream& input, Empresa& empresaTal){
-	cout << " CNPJ: ";
-	getline( input, empresaTal.cnpjDestaEmpresa);
+istream& operator>> ( istream& input, Empresa& empresaTal){
 	cout << " Nome da Empresa: ";
-	getline( input, empresaTal.cnpjDestaEmpresa);
+	getline(input, empresaTal.nomeDestaEmpresa);
+	cout << " CNPJ: ";
+	getline(input, empresaTal.cnpjDestaEmpresa);
 	return input;
 }
