@@ -34,6 +34,7 @@ public:
 	Date operator ++(int); // postfix
 	Date operator --(); // prefix
 	Date operator --(int); // postfix
+
 };
 
 bool operator == (const Date&, const Date&); //comparison operators
@@ -44,5 +45,6 @@ bool operator <= (const Date&, const Date&);
 bool operator >= (const Date&, const Date&);
 
 ostream& operator << (ostream& os, const Date& d); //output operator
+istream& operator >> (istream& input, Date& algumaData);
 
 #endif // _DATA_H_

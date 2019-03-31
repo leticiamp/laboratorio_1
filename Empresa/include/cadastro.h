@@ -7,15 +7,16 @@ Alunos: Letícia Moura e Odilon Júlio
 
 #ifndef _CADASTRO_H_
 #define _CADASTRO_H_
+#include "empresa.h"
 
 using namespace std;
 #define MAXIMO_DE_EMPRESAS 10
 
 class Cadastro{
 public:
-	char listaOpcaoInicial(string opcaoInicial); // Método que mostra opções iniciais.
-	char listaOpcaoSecundaria(string opcaoSecundaria); // Método que mostra opções secundárias relativas à empresa escolhida.
-	char listaOpcoesDeAlteracao(string opcaoAlteracao); // Método que apresenta possibilidades de edição/mudança.
+	char listaOpcaoInicial(); // Método que mostra opções iniciais.
+	char listaOpcaoSecundaria(); // Método que mostra opções secundárias da empresa escolhida.
+	char listaOpcoesDeAlteracao(); // Método que apresenta possibilidades de alteracão.
 	int pesquisarEmpresa(string algumaEmpresa); // Método que pesquisa uma empresa pelo nome.
 	void mostrarTodasAsEmpresas(); // Método para listar todas as empresas já cadastradas.
 	void inserirEmpresa(); // Método para criar uma nova empresa.
@@ -31,6 +32,6 @@ public:
 private:
 	Empresa *empresas[MAXIMO_DE_EMPRESAS];
 	int totalDeEmpresas;
-}
+};
 
-#endif // _CADATRO_H_
+#endif // _CADASTRO_H_

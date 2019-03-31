@@ -43,33 +43,33 @@ MÉTODOS GETTERS E SETTERS.
 */
 
 void Cadastro::mediaDeFuncionarios(){
-	cout << "A Média de Funcionários é " <<
+	cout << "A Média de Funcionários é "
 		 << ((float) Funcionario::getNumeroDeFuncionarios()/Empresa::getTotalEmpresas())
 		 << endl;
 }
 
-char Cadastro::listaOpcaoInicial(string opcaoInicial){ // Método que mostra opções iniciais.
+char Cadastro::listaOpcaoInicial(){ // Método que mostra as alternativas iniciais.
 	char alternativa = '0';
 	while ( alternativa == '0' ||
 			alternativa == '1' ||
 			alternativa == '2' ||
 			alternativa == '3' ||
 			alternativa == '4'){
-		cout << " Escolha uma das seguintes alternativas: " << "\n"
-			 << " ++++++++++++++++++++++++++++++++++++++++" << "\n"
+		cout << " ++++++++++++++++++++++++++++++++++++++++" << "\n"
 			 << " Digite '1' para: Média de Funcionários" << "\n"
 			 << " Digite '2' para: Escolher uma Empresa" << "\n"
 			 << " Digite '3' para: Escolher um Funcionário " << "\n"
 			 << " Digite '4' para: Sair deste Menu" << "\n"
-			 << " Alternatva escolhida: "; cin >> alternativa;
+			 << " Alternatva escolhida: "; 
+			 cin >> alternativa;
 		switch(alternativa){
 			case '0' : cout << "Alternativa inválida!" 
 							<< endl;
 			case '1' : mediaDeFuncionarios();
 				break;
-			case '2' : listaOpcaoSecundaria()
+			case '2' : listaOpcaoSecundaria();
 				break;
-			case '3' : listaOpcoesDeAlteracao()
+			case '3' : listaOpcoesDeAlteracao();
 				break;
 			case '4' : // Nenhuma ação. Somente sai do menu.
 				break;
@@ -79,7 +79,7 @@ char Cadastro::listaOpcaoInicial(string opcaoInicial){ // Método que mostra op�
 	return alternativa;
 }
 
-char Cadastro::listaOpcaoSecundaria(string opcaoSecundaria){ // Método que mostra opções secundárias relativas à empresa escolhida.
+char Cadastro::listaOpcaoSecundaria(){ // Método que relaciona opcões secundárias relativas à empresa escolhida.
 	char alternativa = '0';
 	while ( alternativa == '0' ||
 			alternativa == '1' ||
@@ -114,7 +114,7 @@ char Cadastro::listaOpcaoSecundaria(string opcaoSecundaria){ // Método que most
 	return alternativa;	
 }
 
-char Cadastro::listaOpcoesDeAlteracao(string opcaoAlteracao){ // Método que apresenta possibilidades de edição/mudança.
+char Cadastro::listaOpcoesDeAlteracao(){ // Método que apresenta possibilidades de edição/mudança.
 	char alternativa = '0';
 	while ( alternativa == '0' ||
 			alternativa == '1' ||
@@ -155,7 +155,7 @@ int Cadastro::pesquisarEmpresa(string algumaEmpresa){ // Método que pesquisa um
 	O retorno deverá ser em inteiros, portanto é necessária uma representação booleana 
 	dada por números. A fim de evitar duplo sentido, será utilizado o -1.
 	*/
-	int encontrou = -1
+	int encontrou = -1;
 	while(p < totalDeEmpresas){
 		if (empresas[p]->getNomeEmpresa() == algumaEmpresa)
 		{
@@ -168,7 +168,7 @@ int Cadastro::pesquisarEmpresa(string algumaEmpresa){ // Método que pesquisa um
 
 void Cadastro::mostrarTodasAsEmpresas(){ // Método para listar todas as empresas já cadastradas.
 	cout << "Esse cadastro possui " << totalDeEmpresas << "empresas cadastradas."
-		 << "\n" << "================================" << "Lista de empresas:"
+		 << "\n" << "================================" << "Lista de empresas: ";
 	int k = 0;
 	while( k < totalDeEmpresas){
 		cout << "Empresa Nº" << k+1 << " ---- "
@@ -198,7 +198,7 @@ void Cadastro::excluirEmpresa(){ // Método para remover uma referida empresa.
 		if (empresas[n]->getNomeEmpresa() == nomeDaEmpresaAExcluir){
 			delete empresas[n];
 			totalDeEmpresas--;
-			rearranjar = TRUE;
+			rearranjar = false;
 		}
 		if (rearranjar){
 			/*
@@ -211,11 +211,11 @@ void Cadastro::excluirEmpresa(){ // Método para remover uma referida empresa.
 	if (rearranjar){
 		cout << "A Empresa " << nomeDaEmpresaAExcluir 
 			 << " foi excluída com sucesso.";
-		}
+	}
 	else{
 		cout << "A Empresa " << nomeDaEmpresaAExcluir
-			 << "não pode ser removida, pois não está cadastrada."
-		}
+			 << "não pode ser removida, pois não está cadastrada." ;
+	}
 }
 
 void Cadastro::mostrarFuncionarios(){
@@ -231,7 +231,7 @@ void Cadastro::mostrarFuncionarios(){
 		cout << "A Empresa " << nomeDaEmpresaQueMostraFuncionario
 			 << "possui os seguintes funcionários:" << "\n\n" << endl;
 		empresas[numeroDaEmpresa]->informaFuncionarios();
-	}
+	};
 }
 
 void Cadastro::alteraSalario(){
@@ -278,15 +278,15 @@ void Cadastro::excluirFuncionario(){
 		int numeroDaEmpresa = pesquisarEmpresa(nomeDaEmpresaQueDemiteFuncionario);
 	
 	if (numeroDaEmpresa == -1){
-		cout << "Desculpe! A Empresa " << nomeDaEmpresaQueAdicionaFuncionario; 
+		cout << "Desculpe! A Empresa " << nomeDaEmpresaQueDemiteFuncionario
 			 << "não está cadastrada!" << endl;
 	}
 	else{
 		cout << "Qual o nome do funcionário da Empresa" << nomeDaEmpresaQueDemiteFuncionario
 			 << "que deseja demitir?" << endl;
 		getline(cin, nomeDoFuncionarioADemitir);
-		if (empresas[numeroDaEmpresa]->demiteFuncionarios(nomeDoFuncionarioADemitir){
-			cout << "O funcionário " <<
+		if (empresas[numeroDaEmpresa]->demiteFuncionario(nomeDoFuncionarioADemitir)){
+			cout << "O funcionário "
 				 << nomeDoFuncionarioADemitir
 				 << "foi excluído com sucesso!" << endl;
 		}
@@ -296,4 +296,5 @@ void Cadastro::excluirFuncionario(){
 		}
 	}
 }
+
 

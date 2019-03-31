@@ -13,6 +13,6 @@ int Empresa:: contadorDeEmpresas = 0;
 int main(int argc, char const *argv[]){
 	
 	Cadastro *cadastrando = new Cadastro();
-	cadastrando->listaOpcaoInicial("\nEscolha uma das seguintes opções: \n");
+	cadastrando->listaOpcaoInicial();
 	return 0;
 }

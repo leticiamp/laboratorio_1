@@ -18,37 +18,37 @@ Date::Date(const int& d, const int& m, const int& y){ // Construtor parametrizad
 	day_ = d;
 	month_ = m;
 	year_ = y; 
-};
+}
 
 Date::Date(){// Construtor padrão. (inline definitions)
 	year_ = 0;
 	month_ = 0;
 	day_ = 0;
-};
+}
 
 int Date::day() const{
 	return day_;
-};
+}
 
 int Date::month() const{
 	return month_;
-};
+}
 
 int Date::year() const{
 	return year_;
-};
+}
 
 void Date::set_day (const int& day){
 	Date::day_ = day;
-};
+}
 
 void Date::set_month (const int& month){
 	Date::month_ = month;
-};
+}
 
 void Date::set_year (const int& year){
 	Date::year_ = year;
-};
+}
 
 bool Date::valid() const {
 	// Esse método irá checar se a data fornecida é válida ou não.
@@ -83,7 +83,7 @@ bool Date::valid() const {
 	}
 	return true;
 
-};
+}
 
 bool operator == (const Date& d1, const Date& d2){
 	//Verificação para igualdades.
@@ -226,7 +226,7 @@ Date Date::operator --(int){
 Date Date::operator --(){
 	*this = previous_date(*this);
 	return *this;
-};
+}
 
 inline long long_date(const Date& d)
 {
@@ -234,7 +234,7 @@ inline long long_date(const Date& d)
 		return d.year() * 10000 + d.month() * 100 + d.day();
 	}
 	return -1;
-};
+}
 	
 ostream & operator << (ostream& os, const Date& d){
 	if (d.valid()){
@@ -245,7 +245,16 @@ ostream & operator << (ostream& os, const Date& d){
 	}
 	return os;
 }
-
-
+/*
+istream& operator>> (istream& input, Date& algumaData(int& d, int& m, int& y)){
+	cout << "Dia: ";
+	input >> algumaData.set_day(d);
+	cout << "Mês: ";
+	input >> algumaData.set_day(m);
+	cout << "Ano: ";
+	input >> algumaData.set_day(y);
+	return input;
+}
+*/
 
 

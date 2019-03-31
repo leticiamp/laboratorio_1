@@ -152,7 +152,7 @@ Empresa::~Empresa(){ //Ao destruir a empresa, destrói também todos os seus fun
 SOBRECARGA DE OPERADORES
 ====================================
 */
-ostream& operator << ( ostream& output, const Empresa& empresaTal){
+ostream& operator<< ( ostream& output, const Empresa& empresaTal){
 	output 	<< empresaTal.cnpjDestaEmpresa << "   ---    "
 			<< empresaTal.nomeDestaEmpresa << "   ---    "
 			<< empresaTal.totalFuncionarios << "funcionários contratados."
@@ -160,10 +160,10 @@ ostream& operator << ( ostream& output, const Empresa& empresaTal){
 	return output;
 }
 
-istream& operator >> ( istream& input, Empresa& empresaTal){
+istream& operator>> ( istream& input, Empresa& empresaTal){
 	cout << " CNPJ: ";
-	getline( input, empresaTal.cnpjDestaEmpresa);
+	input >> empresaTal.cnpjDestaEmpresa;
 	cout << " Nome da Empresa: ";
-	getline( input, empresaTal.cnpjDestaEmpresa);
+	input >> empresaTal.cnpjDestaEmpresa;
 	return input;
 }
