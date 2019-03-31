@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: funcionario.cpp
 ===========================================================================
 */
 
@@ -34,12 +36,13 @@ MÉTODOS "SETTERS"
 void Funcionario::alteraSalario(float porcentagem) {
 	salario = salario * ((porcentagem/100) + 1);
 }
-
+/*
 void Funcionario::setAdmissao(const int& d, const int& m, const int& y){
 	admissao.set_day(d);
 	admissao.set_month(m);
 	admissao.set_year(y);
 }
+*/
 
 /*
 =========================================
@@ -90,14 +93,15 @@ ostream& operator<< (ostream& output, const Funcionario& algumFuncionario){
 }
 
 istream& operator>> (istream& input, Funcionario& algumFuncionario){
-	cout << "Nome: ";
+	cout << "Nome do Funcionário: ";
 	getline(input, algumFuncionario.nome);
-	cout << "Salário: R$";
+	cout << "Salário: R$ ";
 	input >> algumFuncionario.salario;
 	cout << "Data de Admissão: ";
 	input >> algumFuncionario.admissao;
 	return input;
 }
+
 
 
 

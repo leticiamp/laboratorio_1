@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: cadastro.h 
 ===========================================================================
 */
 
@@ -14,9 +16,9 @@ using namespace std;
 
 class Cadastro{
 public:
-	char listaOpcaoInicial(); // Método que mostra opções iniciais.
-	char listaOpcaoSecundaria(); // Método que mostra opções secundárias da empresa escolhida.
-	char listaOpcoesDeAlteracao(); // Método que apresenta possibilidades de alteracão.
+	char listaOpcaoInicial(string abasOrientacao); // Método que mostra opções iniciais.
+	char listaOpcaoSecundaria(string abasOrientacao); // Método que mostra opções secundárias da empresa escolhida.
+	char listaOpcoesDeAlteracao(string abasOrientacao); // Método que apresenta possibilidades de alteracão.
 	int pesquisarEmpresa(string algumaEmpresa); // Método que pesquisa uma empresa pelo nome.
 	void mostrarTodasAsEmpresas(); // Método para listar todas as empresas já cadastradas.
 	void inserirEmpresa(); // Método para criar uma nova empresa.

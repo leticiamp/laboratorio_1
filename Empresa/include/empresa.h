@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: empresa.h
 ===========================================================================
 */
 

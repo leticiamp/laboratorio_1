@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: funcionario.h 
 ===========================================================================
 */
 
@@ -20,7 +22,7 @@ public:
 	string getNome(); // Método para mostrar o nome do funcionário.
 	double getSalario(); // Método para mostrar o salário do funcionário.
 	Date getAdmissao(); // Método para mostrar a data de admissão do funcionário.
-	void setAdmissao(const int& d, const int& m, const int& y);
+	//void setAdmissao(const int& d, const int& m, const int& y);
 	void alteraSalario(float porcentagem); // Atualiza o salário percentualmente.
 	// Sobrecarga dos operadores '==' e '!=' para poder comparar dois objetos da classe Funcionario.
 	bool operator != (const Funcionario &funcionarioDiferente); 

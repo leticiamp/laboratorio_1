@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: cadastro.cpp
 ===========================================================================
 */
 
@@ -43,64 +45,60 @@ MÉTODOS GETTERS E SETTERS.
 */
 
 void Cadastro::mediaDeFuncionarios(){
-	cout << "A Média de Funcionários é "
+	if ((float) Funcionario::getNumeroDeFuncionarios() > 0 &&
+		 Empresa::getTotalEmpresas() > 0){
+		cout << " A Média de Funcionários é "
 		 << ((float) Funcionario::getNumeroDeFuncionarios()/Empresa::getTotalEmpresas())
 		 << endl;
+	}
+	else{
+		cout << " Desculpe! Não foi possível informar a média." << endl;
+	}
 }
 
-char Cadastro::listaOpcaoInicial(){ // Método que mostra as alternativas iniciais.
+char Cadastro::listaOpcaoInicial(string abasOrientacao){ // Método que mostra as alternativas iniciais.
 	char alternativa = '0';
-	while ( alternativa == '0' ||
-			alternativa == '1' ||
-			alternativa == '2' ||
-			alternativa == '3' ||
-			alternativa == '4'){
-		cout << " ++++++++++++++++++++++++++++++++++++++++" << "\n"
-			 << " Digite '1' para: Média de Funcionários" << "\n"
-			 << " Digite '2' para: Escolher uma Empresa" << "\n"
-			 << " Digite '3' para: Escolher um Funcionário " << "\n"
+	do{
+		cout << " \n ++++++++++++++++++++++++++++++++++++++++++++++\n" << "\n"
+			 << "                   "  << abasOrientacao
+			 << " \n Escolha uma das seguintes alternativas abaixo: " << "\n"
+			 << " Digite '1' para: Média de Funcionários por Empresa" << "\n"
+			 << " Digite '2' para: Opções de Empresa" << "\n"
+			 << " Digite '3' para: Opções de Funcionário " << "\n"
 			 << " Digite '4' para: Sair deste Menu" << "\n"
-			 << " Alternatva escolhida: "; 
-			 cin >> alternativa;
+			 << " Alternativa escolhida: "; 
+			 cin >> alternativa; cin.ignore();
 		switch(alternativa){
-			case '0' : cout << "Alternativa inválida!" 
-							<< endl;
 			case '1' : mediaDeFuncionarios();
 				break;
-			case '2' : listaOpcaoSecundaria();
+			case '2' : listaOpcaoSecundaria("\n Menu Inicial > Empresa ");
 				break;
-			case '3' : listaOpcoesDeAlteracao();
+			case '3' : listaOpcoesDeAlteracao("\n Menu Inicial > Funcionário ");
 				break;
 			case '4' : // Nenhuma ação. Somente sai do menu.
 				break;
+			default : cout << " \n\n Alternativa inválida!" << endl;
 		}
-	}
-	cout << "Alternativa inválida!" << endl;
+	} while (alternativa != '4');
 	return alternativa;
 }
 
-char Cadastro::listaOpcaoSecundaria(){ // Método que relaciona opcões secundárias relativas à empresa escolhida.
-	char alternativa = '0';
-	while ( alternativa == '0' ||
-			alternativa == '1' ||
-			alternativa == '2' ||
-			alternativa == '3' ||
-			alternativa == '4' ||
-			alternativa == '5'){
-		cout << " Escolha uma das seguintes alternativas: " << "\n"
-			 << " ++++++++++++++++++++++++++++++++++++++++" << "\n"
+char Cadastro::listaOpcaoSecundaria(string abasOrientacao){ // Método que relaciona opcões secundárias relativas à empresa escolhida.
+	char alternativa;
+	do {
+		cout << " \n ++++++++++++++++++++++++++++++++++++++++++++++\n" << "\n"
+			 << "                   " << abasOrientacao
+			 << " \n Escolha uma das seguintes alternativas abaixo: " << "\n"
 			 << " Digite '1' para: Listar todas as empresas" << "\n"
-			 << " Digite '2' para: Modificar uma características de uma empresa" << "\n"
+			 << " Digite '2' para: Editar funcionários de uma empresa" << "\n"
 			 << " Digite '3' para: Adicionar uma empresa " << "\n"
 			 << " Digite '4' para: Remover uma empresa " << "\n"
-			 << " Digite '5' para: Sair" << "\n"
-			 << " Alternatva escolhida: "; cin >> alternativa;
+			 << " Digite '5' para: Sair " << "\n"
+			 << " Alternativa escolhida: "; cin >> alternativa; cin.ignore();
 		switch(alternativa){
-			case '0' : cout << "Alternativa inválida!" 
-							<< endl;
 			case '1' : mostrarTodasAsEmpresas();
 				break;
-			case '2' : listaOpcoesDeAlteracao();
+			case '2' : listaOpcoesDeAlteracao("\n Menu Inicial > Empresa > Alterar");
 				break;
 			case '3' : inserirEmpresa();
 				break;
@@ -108,31 +106,25 @@ char Cadastro::listaOpcaoSecundaria(){ // Método que relaciona opcões secundá
 				break;
 			case '5' : // Nenhuma ação. Somente sai do menu.
 				break;
+			default : cout << " \n\n Alternativa inválida!" << endl;
 		}
-	}
-	cout << "Alternativa inválida!" << endl;
+	} while (alternativa != '5');
 	return alternativa;	
 }
 
-char Cadastro::listaOpcoesDeAlteracao(){ // Método que apresenta possibilidades de edição/mudança.
+char Cadastro::listaOpcoesDeAlteracao(string abasOrientacao){ // Método que apresenta possibilidades de edição/mudança.
 	char alternativa = '0';
-	while ( alternativa == '0' ||
-			alternativa == '1' ||
-			alternativa == '2' ||
-			alternativa == '3' ||
-			alternativa == '4' ||
-			alternativa == '5'){
-		cout << " Escolha uma das seguintes alternativas: " << "\n"
-			 << " ++++++++++++++++++++++++++++++++++++++++" << "\n"
+	do{
+		cout << " \n ++++++++++++++++++++++++++++++++++++++++++++++\n" << "\n"
+			 << "                   " << abasOrientacao
+			 << " \n Escolha uma das seguintes alternativas abaixo: " << "\n"
 			 << " Digite '1' para: Listar todas os funcionários" << "\n"
 			 << " Digite '2' para: Modificar o salário dos funcionários" << "\n"
 			 << " Digite '3' para: Adicionar um funcionário " << "\n"
 			 << " Digite '4' para: Excluir um funcionário " << "\n"
 			 << " Digite '5' para: Sair" << "\n"
-			 << " Alternatva escolhida: "; cin >> alternativa;
+			 << " Alternativa escolhida: "; cin >> alternativa; cin.ignore();
 		switch(alternativa){
-			case '0' : cout << "Alternativa inválida!" 
-							<< endl;
 			case '1' : mostrarFuncionarios();
 				break;
 			case '2' : alteraSalario();
@@ -143,9 +135,10 @@ char Cadastro::listaOpcoesDeAlteracao(){ // Método que apresenta possibilidades
 				break;
 			case '5' : // Nenhuma ação. Somente sai do menu.
 				break;
+			default : cout << " \n\n Alternativa inválida!" << endl;
 		}
-	}
-	cout << "Alternativa inválida!" << endl;
+	} while (alternativa != '5');
+	
 	return alternativa;		
 }	
 
@@ -167,11 +160,12 @@ int Cadastro::pesquisarEmpresa(string algumaEmpresa){ // Método que pesquisa um
 }
 
 void Cadastro::mostrarTodasAsEmpresas(){ // Método para listar todas as empresas já cadastradas.
-	cout << "Esse cadastro possui " << totalDeEmpresas << "empresas cadastradas."
-		 << "\n" << "================================" << "Lista de empresas: ";
+	cout << "\n\n Esse cadastro possui " << totalDeEmpresas << " empresa(s) cadastrada(s)."
+		 << "\n" << "\n=============================================" 
+		 << "\n Lista de empresas cadastradas: \n\n";
 	int k = 0;
 	while( k < totalDeEmpresas){
-		cout << "Empresa Nº" << k+1 << " ---- "
+		cout << " Empresa Nº" << k+1 << " :::: "
 			 << (*empresas[k]) << endl;
 		k++;
 	}
@@ -184,37 +178,16 @@ void Cadastro::inserirEmpresa(){ // Método para criar uma nova empresa.
 		empresas[totalDeEmpresas++] = novaEmpresa;
 	}
 	else{
-		cout << "Não é possível adicionar uma nova empresa a este cadastro." << endl;
+		cout << " Não é possível adicionar uma nova empresa a este cadastro." << endl;
 	}
-	cout << "Empresa " << novaEmpresa << "adicionada com sucesso!" << endl;
+	cout << " Empresa adicionada com sucesso!" << endl;
 }
 
 void Cadastro::excluirEmpresa(){ // Método para remover uma referida empresa.
 	string nomeDaEmpresaAExcluir; 
-	cout << "Qual empresa deseja excluir deste cadastro?"; getline(cin, nomeDaEmpresaAExcluir);
+	cout << " Qual empresa deseja excluir deste cadastro? "; getline(cin, nomeDaEmpresaAExcluir);
 	bool rearranjar = false;
 	int n = 0;
-	/*
-	for (int i = 0; i < totalDeEmpresas; ++i)
-	{
-		if (empresas[i]->getNomeEmpresa() == nomeDaEmpresaAExcluir){
-			delete empresas[i];
-			totalDeEmpresas--;
-			rearranjar = true;
-		}
-		if (rearranjar){
-			empresas[i] = empresas[i+1];
-		}
-	}
-	if (rearranjar){
-		cout << "A Empresa " << nomeDaEmpresaAExcluir 
-			 << " foi excluída com sucesso.";
-	}
-	else{
-		cout << "A Empresa " << nomeDaEmpresaAExcluir
-			 << "não pode ser removida, pois não está cadastrada." ;
-	}
-	*/
 	while(n < totalDeEmpresas){
 		if(empresas[n]->getNomeEmpresa() == nomeDaEmpresaAExcluir){
 			delete empresas[n];
@@ -232,22 +205,22 @@ void Cadastro::excluirEmpresa(){ // Método para remover uma referida empresa.
 	}
 	else{
 		cout << "A Empresa " << nomeDaEmpresaAExcluir
-			 << "não pode ser removida, pois não está cadastrada." ;
+			 << " não pode ser removida, pois não está cadastrada." ;
 	}
 }
 
 void Cadastro::mostrarFuncionarios(){
 	string nomeDaEmpresaQueMostraFuncionario;
-	cout << "Deseja visualizar os funcionparios de qual empresa? ";
+	cout << "\n\n Deseja visualizar os funcionários de qual empresa? ";
 	getline(cin, nomeDaEmpresaQueMostraFuncionario);
 	int numeroDaEmpresa = pesquisarEmpresa(nomeDaEmpresaQueMostraFuncionario);
 	if (numeroDaEmpresa == -1){
-		cout << "Desculpe! A Empresa " << nomeDaEmpresaQueMostraFuncionario 
-			 << "não está cadastrada!" << endl;
+		cout << " Desculpe! A Empresa " << nomeDaEmpresaQueMostraFuncionario 
+			 << " não está cadastrada!" << endl;
 	}
 	else{
-		cout << "A Empresa " << nomeDaEmpresaQueMostraFuncionario
-			 << "possui os seguintes funcionários:" << "\n\n" << endl;
+		cout << " A Empresa " << nomeDaEmpresaQueMostraFuncionario
+			 << " possui os seguintes funcionários:" << "\n\n" << endl;
 		empresas[numeroDaEmpresa]->informaFuncionarios();
 	};
 }
@@ -258,12 +231,12 @@ void Cadastro::alteraSalario(){
 	getline(cin, nomeDaEmpresaQueAlteraSalario);
 	int numeroDaEmpresa = pesquisarEmpresa(nomeDaEmpresaQueAlteraSalario);
 	if (numeroDaEmpresa == -1){
-		cout << "Desculpe! A Empresa " << nomeDaEmpresaQueAlteraSalario 
-			 << "não está cadastrada!" << endl;
+		cout << " Desculpe! A Empresa " << nomeDaEmpresaQueAlteraSalario 
+			 << " não está cadastrada!" << endl;
 	}
 	else{
 		float percentual;
-		cout << "O salário da Empresa "<< nomeDaEmpresaQueAlteraSalario
+		cout << " O salário da Empresa "<< nomeDaEmpresaQueAlteraSalario
 			 << " será atualizado em qual percentual? " << endl;
 		cin >> percentual;
 		empresas[numeroDaEmpresa]->alteraSalarioEmpresa(percentual);
@@ -272,12 +245,12 @@ void Cadastro::alteraSalario(){
 
 void Cadastro::inserirFuncionario(){
 	string nomeDaEmpresaQueAdicionaFuncionario;
-	cout << "Deseja inserir um funcionário em qual empresa? ";
+	cout << " Deseja inserir um funcionário em qual empresa? ";
 	getline(cin, nomeDaEmpresaQueAdicionaFuncionario);
 	int numeroDaEmpresa = pesquisarEmpresa(nomeDaEmpresaQueAdicionaFuncionario);
 	if (numeroDaEmpresa == -1){
-		cout << "Desculpe! A Empresa " << nomeDaEmpresaQueAdicionaFuncionario 
-			 << "não está cadastrada!" << endl;
+		cout << " Desculpe! A Empresa " << nomeDaEmpresaQueAdicionaFuncionario 
+			 << " não está cadastrada!" << endl;
 	}
 	else{
 		Funcionario *novoFuncionario = new Funcionario();
@@ -291,25 +264,25 @@ void Cadastro::inserirFuncionario(){
 void Cadastro::excluirFuncionario(){
 	string nomeDaEmpresaQueDemiteFuncionario;
 	string nomeDoFuncionarioADemitir;
-	cout << "Deseja excluir um funcionário em qual empresa? ";
+	cout << " Deseja excluir um funcionário em qual empresa? ";
 	getline(cin, nomeDaEmpresaQueDemiteFuncionario);
 		int numeroDaEmpresa = pesquisarEmpresa(nomeDaEmpresaQueDemiteFuncionario);
 	
 	if (numeroDaEmpresa == -1){
-		cout << "Desculpe! A Empresa " << nomeDaEmpresaQueDemiteFuncionario
-			 << "não está cadastrada!" << endl;
+		cout << " Desculpe! A Empresa " << nomeDaEmpresaQueDemiteFuncionario
+			 << " não está cadastrada!" << endl;
 	}
 	else{
-		cout << "Qual o nome do funcionário da Empresa" << nomeDaEmpresaQueDemiteFuncionario
-			 << "que deseja demitir?" << endl;
+		cout << " Qual o nome do funcionário da Empresa" << nomeDaEmpresaQueDemiteFuncionario
+			 << " que deseja demitir?" << endl;
 		getline(cin, nomeDoFuncionarioADemitir);
 		if (empresas[numeroDaEmpresa]->demiteFuncionario(nomeDoFuncionarioADemitir)){
-			cout << "O funcionário "
+			cout << " O funcionário "
 				 << nomeDoFuncionarioADemitir
-				 << "foi excluído com sucesso!" << endl;
+				 << " foi excluído com sucesso!" << endl;
 		}
 		else{
-			cout << "Não foi possível localizar o funcionário "
+			cout << " Não foi possível localizar o funcionário "
 				 << nomeDoFuncionarioADemitir << endl; 
 		}
 	}

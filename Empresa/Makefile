@@ -1,5 +1,12 @@
-# Makefile da disciplina Linguagem de Programação I
-# Alunos: Letícia Pinheiro e odilon Júlio
+
+# Disciplina: Linguagem de Programação I
+# Laboratório I
+# Professor: Silvio
+# Alunos: Letícia Moura e Odilon Júlio
+# Arquivo: Makefile
+# ===========================================================================
+
+
 
 CC = g++
 PROG = $(BIN)/Empresa

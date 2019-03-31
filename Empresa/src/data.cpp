@@ -1,7 +1,9 @@
 /*
 Disciplina: Linguagem de Programação I
+Laboratório I
 Professor: Silvio
 Alunos: Letícia Moura e Odilon Júlio
+Arquivo: data.cpp 
 ===========================================================================
 */
 
@@ -245,16 +247,16 @@ ostream & operator << (ostream& os, const Date& d){
 	}
 	return os;
 }
-/*
-istream& operator>> (istream& input, Date& algumaData(x, y, z)){
-	cout << "Dia: ";
-	input >> algumaData(x);
-	cout << "Mês: ";
-	input >> algumaData(y);
-	cout << "Ano: ";
-	input >> algumaData(z);
-	return input;
+
+istream& operator >> ( istream& i, Date& d){
+	string algumData;
+	i.ignore();
+	getline(i, algumData);
+	d.day_ = atoi(algumData.substr(0, 2).c_str()); 
+    d.month_ = atoi(algumData.substr(3, 2).c_str()); 
+    d.year_ = atoi(algumData.substr(6, 4).c_str());
+	return i;
 }
-*/
+
 
 
