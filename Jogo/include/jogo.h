@@ -16,20 +16,20 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 class Jogo {
 private:
-	int m_total_jogadores;
-	Jogador * m_jogadores[MAX_JOGADORES];
-	int m_partidas;
-	Dado m_d1;
-	Dado m_d2;
+	int total_jogadores;
+	Jogador * jogadores[MAX_JOGADORES];
+	int partidas;
+	Dado m_d1, m_d2;
+	Jogador ganhador = nullptr;
 public:
-	int getM_total_jogadores();
-	int getJogadoresAtivos();
-	int getM_partidas();
+	int getTotal_jogadores();
+	int getJogadoresAtivos(); 
 
 	void resultado();
-	void novapartida();
+	void novapartida(); 
 	void run();
 	void addJogador(Jogador *novo_);
+	int totalJogando(); 
 
 	Jogo();
 	~Jogo();

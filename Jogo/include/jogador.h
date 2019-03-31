@@ -20,7 +20,7 @@ class Jogador {
 private:
 	string nome; 
 	int pontos;
-	int alvo;
+	int alvo; // meta de pontos a ser atingida
 	Status status;
 
 public:

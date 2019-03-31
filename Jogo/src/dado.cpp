@@ -21,11 +21,6 @@ Dado::Dado():gen(rd()), dis(1, 6){
 	resultado = round(dis(gen));
 }
 
-Dado::setJogar(){
-	resultado = round(dis(gen));
-	return resultado;
-}
-
-Dado::getResultado(){
-	return resultado;
+Dado::getValor_acumulado(){
+	return valor_acumulado;
 }
