@@ -30,11 +30,11 @@ public:
 	Status getStatus();
 
 	void JogarDados(Dado &d1, Dado &d2);
-	bool JogarAgora(); //retorna a escolha do jogador para jogar ou nao a partida
+	bool jogarAgora(); //retorna a escolha do jogador para jogar ou nao a partida
 
 	Jogador();
 	Jogador(string nome_);
 	~Jogador();
-}
+};
 
 #endif

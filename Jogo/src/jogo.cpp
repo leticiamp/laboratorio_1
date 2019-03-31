@@ -12,16 +12,12 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 using namespace std;
 
-int getTotal_jogadores() {
-	return total_jogadores;
-}
-
 int getjogadoresAtivos() {
 	int ativos = 0;
 	int i;
 
 	for (i=0; i < total_jogadores; i++) {
-		if (jogadores->getStatus() == ATIVO) {
+		if (jogadores[i]->getStatus() == ATIVO) {
 			ativos ++;
 		}
 	}
@@ -36,7 +32,7 @@ void resultado() {
 	for (int i=0; i < total_jogadores; i++) {
 		cout << jogadores[i] -> getNome() << "obteve" << jogadores[i] -> getPontos() << "pontos" << endl;
 		//verificar se o jogador atual é o vencedor
-		if (jogadores[i] == vencedor) {
+		if (jogadores[i] == ganhador) {
 			cout << jogadores[i] -> getNome() << "venceu" << endl;
 		}
 		else {
@@ -54,16 +50,16 @@ void Jogo:: novaPartida() {
 	while (i < total_jogadores) {
 		//Verificando se há somente um jogador jogando
 		if (jogadores[i]->getStatus() != INATIVO && totalJogando() == 1) {
-			vencedor = jogadores[i];
+			ganhador = jogadores[i];
 			return;
 		}
 
-		if (jogadores[i] -> JogarAgora()) {
-			jogadores[i] -> JogarDados(Dado &d1, Dado &d2);
+		if (jogadores[i] -> jogarAgora()) {
+			jogadores[i] -> JogarDados(d1, d2);
 
 			//verifica se o jogador alcançou o alvo
 			if (jogadores[i] -> getPontos() == Jogador::getAlvo()) {	
-				vencedor = jogadores[i];
+				ganhador = jogadores[i];
 				return;
 			}
 		}
@@ -76,8 +72,8 @@ void Jogo:: novaPartida() {
 }
 
 void Jogo:: run() {
-	while(totalJogando() > 1 && getJogadoresAtivos() > 0 && vencedor==nullptr) {
-		novapartida()
+	while(totalJogando() > 1 && getJogadoresAtivos() > 0 && ganhador == nullptr) {
+		novaPartida();
 	}
 	resultado();
 }
@@ -97,6 +93,8 @@ int Jogo::totalJogando() {
 				jogando ++;
 			}
 	}
+
+	return jogando;
 }
 
 Jogo::Jogo():total_jogadores(0), partidas(0) {}

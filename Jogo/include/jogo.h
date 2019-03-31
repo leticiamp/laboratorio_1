@@ -12,7 +12,7 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 #include "dado.h"
 #include "jogador.h"
 
-#define MAX_JOGADORES 5;
+#define MAX_JOGADORES 5
 
 class Jogo {
 private:
@@ -20,13 +20,12 @@ private:
 	Jogador * jogadores[MAX_JOGADORES];
 	int partidas;
 	Dado m_d1, m_d2;
-	Jogador ganhador = nullptr;
+	Jogador *ganhador = nullptr;
 public:
-	int getTotal_jogadores();
 	int getJogadoresAtivos(); 
 
 	void resultado();
-	void novapartida(); 
+	void novaPartida(); 
 	void run();
 	void addJogador(Jogador *novo_);
 	int totalJogando(); 

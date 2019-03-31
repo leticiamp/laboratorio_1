@@ -21,6 +21,6 @@ Dado::Dado():gen(rd()), dis(1, 6){
 	resultado = round(dis(gen));
 }
 
-Dado::getValor_acumulado(){
+int Dado::getValor_acumulado(){
 	return valor_acumulado;
 }
