@@ -122,7 +122,8 @@ char Cadastro::listaOpcoesDeAlteracao(string abasOrientacao){ // Método que apr
 			 << " Digite '2' para: Modificar o salário dos funcionários" << "\n"
 			 << " Digite '3' para: Adicionar um funcionário " << "\n"
 			 << " Digite '4' para: Excluir um funcionário " << "\n"
-			 << " Digite '5' para: Sair" << "\n"
+			 << " Digite '5' para: Listar funcionários em período de experiência " << "\n"
+			 << " Digite '6' para: Sair" << "\n"
 			 << " Alternativa escolhida: "; cin >> alternativa; cin.ignore();
 		switch(alternativa){
 			case '1' : mostrarFuncionarios();
@@ -133,11 +134,13 @@ char Cadastro::listaOpcoesDeAlteracao(string abasOrientacao){ // Método que apr
 				break;
 			case '4' : excluirFuncionario();
 				break;
-			case '5' : // Nenhuma ação. Somente sai do menu.
+			case '5' : cout << " \n\n Desculpe! Nosso código não conseguiu comparar as datas." << endl;
+				break;
+			case '6' : // Nenhuma ação. Somente sai do menu.
 				break;
 			default : cout << " \n\n Alternativa inválida!" << endl;
 		}
-	} while (alternativa != '5');
+	} while (alternativa != '6');
 	
 	return alternativa;		
 }	
@@ -224,6 +227,23 @@ void Cadastro::mostrarFuncionarios(){
 		empresas[numeroDaEmpresa]->informaFuncionarios();
 	};
 }
+/*
+void Cadastro::mostrarFuncionariosEmExperiencia(){
+	string nomeDaEmpresaQueMostraFuncionarioEmExperiencia;
+	cout << "\n\n Deseja visualizar os funcionários em experiência de qual empresa? ";
+	getline(cin, nomeDaEmpresaQueMostraFuncionario);
+	int numeroDaEmpresa = pesquisarEmpresa(nomeDaEmpresaQueMostraFuncionario);
+	if (numeroDaEmpresa == -1){
+		cout << " Desculpe! A Empresa " << nomeDaEmpresaQueMostraFuncionario 
+			 << " não está cadastrada!" << endl;
+	}
+	else{
+		cout << " A Empresa " << nomeDaEmpresaQueMostraFuncionarioEmExperiencia
+			 << " possui os seguintes funcionários em experiência:" << "\n\n" << endl;
+		empresas[numeroDaEmpresa]->informaFuncionariosEmExperiencia();
+	};
+}
+*/
 
 void Cadastro::alteraSalario(){
 	string nomeDaEmpresaQueAlteraSalario;

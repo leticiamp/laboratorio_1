@@ -28,7 +28,7 @@ public:
 	void inserirFuncionario(); // Método para adicionar funcionário à referida empresa.
 	void excluirFuncionario(); // Método para demitir funcionário de uma referida empresa.
 	void mediaDeFuncionarios(); // Método para apresentar o número médio de funcionários por empresa.
-
+//	void mostrarFuncionariosEmExperiencia(); // Funcionários contratados a menos de 90 dias.
 	Cadastro(); // Método construtor padrão para instanciar uma empresa.
 	~Cadastro(); // Método destrutor.
 private:

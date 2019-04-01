@@ -1,0 +1,6 @@
+
+Usar a linha de comando abaixo, enquanto o Makefile não funcionad, devido a problema no arquivo data.h.
+
+
+
+g++ -std=c++11 -O0 -g -pedantic -o Empresa data.cpp empresa.cpp funcionario.cpp cadastro.cpp main.cpp

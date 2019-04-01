@@ -61,7 +61,7 @@ bool Empresa::demiteFuncionario(string nomeFuncionario){ // Pesquisa pelo nome, 
 
 /* 
 ========================================================
-MÉTODO PARA MOSTRAR TODOS OS FUNCIONÁRIOS DE UMA EMPRESA
+MÉTODO PARA MOSTRAR OS FUNCIONÁRIOS DE UMA EMPRESA
 ========================================================
 */
 // Método que lista todos os funcionários de uma referida empresa.
@@ -75,6 +75,37 @@ void Empresa::informaFuncionarios(){
 		i++;
 	}
 }
+/*
+// Método que lista todos os funcionários EM EXPERIÊNCIA de uma referida empresa.
+void Empresa::informaFuncionariosEmExperiencia(){
+	cout << "A empresa " << nomeDestaEmpresa <<
+	" possui os seguintes funcionários:" << endl;
+	int i = 0;
+	using chrono::system_clock;
+
+	duration <int, ratio < 60*60*24*90 >> noventaDias(1);// Número de segundos no período de três meses.
+	
+	system_clock::time_point hoje = system_clock::now();
+	system_clock::time_point diaReferencia = hoje - noventaDias;
+
+	time_t dR = system_clock::to_time_t(diaReferencia);
+	
+	while (i < totalFuncionarios)
+	{	
+	 
+//		Se a diferença entre hoje e a data de admissão for menor que 3 meses,
+//		então o funcionário ainda está em período de experiência.
+	
+
+//  	Data de admissão dada em segundos a partir de 1 de janeiro de 1970.
+		
+		if (ctime(dR) >= (todosOsFuncionarios[i]->getAdmissao()) ){
+			cout << (*todosOsFuncionarios[i]) << endl;
+		}
+		i++;
+	}
+}
+*/
 
 /* 
 ==============================================

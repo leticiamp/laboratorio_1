@@ -37,6 +37,7 @@ public:
 	string getCnpj(); // Método que mostra o CNPJ da empresa.
 	int getTotalFuncionarios(); // Método que mostra o número de funcionários em uma empresa.
 	void informaFuncionarios(); // Método que mostra todos os funcionários desta empresa.
+//	void informaFuncionariosEmExperiencia(); // Lista funcionários em experiência.
 	void alteraSalarioEmpresa(float taxaPercentual); // Método que aumenta (ou diminui) salário de todos os funcionários desta empresa percentualmente.
 	bool contrataFuncionario(Funcionario *novoFuncionario); // Cria/adiciona funcionários.
 	bool demiteFuncionario(string nomeFuncionario); // Exclui funcionário.
