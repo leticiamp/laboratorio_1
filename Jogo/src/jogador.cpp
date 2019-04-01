@@ -12,7 +12,7 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 using namespace std;
 
-int Jogador::alvo = 50;
+int Jogador::alvo = 20;
 
 string Jogador::getNome() {
 	return nome;
@@ -60,11 +60,11 @@ bool Jogador::jogarAgora(){
 	string escolha;
 
 	do {
-		cout << nome << ", vai jogar? (sim/nao): ";
+		cout << nome << ", vai jogar? (s/n): ";
 		cin >> escolha;
-	} while (escolha != "sim" && escolha != "nao");
+	} while (escolha != "s" && escolha != "n");
 
-	if (escolha == "sim"){
+	if (escolha == "s"){
 		status = ATIVO;
 		
 		return true;

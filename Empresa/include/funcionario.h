@@ -17,7 +17,11 @@ Arquivo: funcionario.h
 using namespace std;
 
 class Funcionario {
-
+private:
+	string nome; // Atributo para o nome do funcionário.
+	Date admissao; // Instancia um objeto data da classe Data.
+	double salario; // Atributo para o salário do funcionário.
+	static int contador; // Atributo estático para contar os funcionários.
 public:
 	string getNome(); // Método para mostrar o nome do funcionário.
 	double getSalario(); // Método para mostrar o salário do funcionário.
@@ -36,12 +40,6 @@ public:
 	// Sobrecarga de operadores de extração e inserção das classes "ostream" e "istream".
 	friend ostream& operator << (ostream& output, const Funcionario& algumFuncionario);
 	friend istream& operator >> (istream& input, Funcionario& algumFuncionario);
-
-private:
-	string nome; // Atributo para o nome do funcionário.
-	Date admissao; // Instancia um objeto data da classe Data.
-	double salario; // Atributo para o salário do funcionário.
-	static int contador; // Atributo estático para contar os funcionários.
 };
 
 #endif // _FUNCIONARIO_H_
