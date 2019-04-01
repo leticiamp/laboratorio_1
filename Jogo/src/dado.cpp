@@ -24,3 +24,7 @@ Dado::Dado():gen(rd()), dis(1, 6){
 int Dado::getValor_acumulado(){
 	return valor_acumulado;
 }
+
+int Dado::jogarDados() {
+	return round(dis(gen));
+}

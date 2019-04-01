@@ -19,7 +19,7 @@ private:
 	int total_jogadores;
 	Jogador * jogadores[MAX_JOGADORES];
 	int partidas;
-	Dado m_d1, m_d2;
+	Dado d1, d2;
 	Jogador *ganhador = nullptr;
 public:
 	int getJogadoresAtivos(); 

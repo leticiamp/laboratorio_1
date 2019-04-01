@@ -20,14 +20,13 @@ class Jogador {
 private:
 	string nome; 
 	int pontos;
-	int alvo; // meta de pontos a ser atingida
 	Status status;
 
 public:
 	string getNome();
 	int getPontos();
-	int getAlvo();
 	Status getStatus();
+	static int alvo; // meta de pontos a ser atingida
 
 	void JogarDados(Dado &d1, Dado &d2);
 	bool jogarAgora(); //retorna a escolha do jogador para jogar ou nao a partida

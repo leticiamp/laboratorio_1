@@ -12,7 +12,7 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 using namespace std;
 
-int getjogadoresAtivos() {
+int Jogo::getJogadoresAtivos() {
 	int ativos = 0;
 	int i;
 
@@ -25,7 +25,7 @@ int getjogadoresAtivos() {
 	return ativos;
 }
 
-void resultado() {
+void Jogo::resultado() {
 	cout << "____________________________________________" << endl;
 	cout << "Resultado do Jogo" << endl;
 	//Mostrar o resultado de todos os jogadores
@@ -42,7 +42,7 @@ void resultado() {
 
 }
 
-void Jogo:: novaPartida() {
+void Jogo::novaPartida() {
 	int i = 0;
 	cout << "____________________________________________"<< endl;
 	cout << "Partida " << partidas << endl;
@@ -58,7 +58,7 @@ void Jogo:: novaPartida() {
 			jogadores[i] -> JogarDados(d1, d2);
 
 			//verifica se o jogador alcançou o alvo
-			if (jogadores[i] -> getPontos() == Jogador::getAlvo()) {	
+			if (jogadores[i] -> getPontos() == Jogador::alvo) {	
 				ganhador = jogadores[i];
 				return;
 			}
@@ -71,7 +71,7 @@ void Jogo:: novaPartida() {
 	partidas ++;
 }
 
-void Jogo:: run() {
+void Jogo::run() {
 	while(totalJogando() > 1 && getJogadoresAtivos() > 0 && ganhador == nullptr) {
 		novaPartida();
 	}
