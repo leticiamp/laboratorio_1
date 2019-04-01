@@ -17,7 +17,7 @@ class Dado {
 
 public:
 	Dado(); // Método construtor.
-	int Jogar(); // Método que joga o dado e mostra o valor.
+	int jogarDados();
 	int getValor_acumulado(); // Método que mostra o valor acumulado.
 
 

@@ -12,16 +12,14 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 using namespace std;
 
+int Jogador::alvo = 50;
+
 string Jogador::getNome() {
 	return nome;
 }
 
 int Jogador::getPontos() {
 	return pontos;
-}
-
-int Jogador::getAlvo() {
-	return alvo;
 }
 
 Status Jogador::getStatus() {  
@@ -43,7 +41,7 @@ void Jogador::JogarDados(Dado &d1, Dado &d2){
 	int jogada = d1.jogarDados() + d2.jogarDados();
 	pontos += jogada;
 
-	if (pontos > alvo) {
+	if (pontos > Jogador::alvo) {
 		status = INATIVO;
 		cout << nome << " fez " << jogada << " e passou (" << pontos << ") pontos. " << endl;
 		cout << nome << "está INATIVO" << endl;
@@ -63,6 +61,7 @@ bool Jogador::jogarAgora(){
 
 	do {
 		cout << nome << ", vai jogar? (sim/nao): ";
+		cin >> escolha;
 	} while (escolha != "sim" && escolha != "nao");
 
 	if (escolha == "sim"){
