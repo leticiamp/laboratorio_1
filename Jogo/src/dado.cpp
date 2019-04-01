@@ -20,11 +20,12 @@ MÉTODO CONSTRUTOR DA CLASSE "Dado"
 Dado::Dado():gen(rd()), dis(1, 6){
 	resultado = round(dis(gen));
 }
+Dado::~Dado(){}
 
-int Dado::getValor_acumulado(){
-	return valor_acumulado;
+int Dado::getValorAcumulado(){
+	return valorAcumulado;
 }
 
-int Dado::jogarDados() {
+int Dado::jogueODado() {
 	return round(dis(gen));
 }

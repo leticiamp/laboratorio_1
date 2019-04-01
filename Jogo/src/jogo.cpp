@@ -13,90 +13,107 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 using namespace std;
 
 int Jogo::getJogadoresAtivos() {
-	int ativos = 0;
-	int i;
+	int jogadoresAtivos = 0;
+	int j = 0;
 
-	for (i=0; i < total_jogadores; i++) {
-		if (jogadores[i]->getStatus() == ATIVO) {
-			ativos ++;
+	while (j < totalDeJogadores) {
+		if (todosOsJogadores[j]->getSituacaoAtual() == ATIVO) {
+			jogadoresAtivos ++;
 		}
+		j++;
 	}
 
-	return ativos;
+	return jogadoresAtivos;
 }
 
-void Jogo::resultado() {
-	cout << "____________________________________________" << endl;
-	cout << "Resultado do Jogo" << endl;
+void Jogo::resultadoFinal() {
+	cout << "_____________________________________________" << endl;
+	cout << "++++++++++++++ RESULTADO FINAL ++++++++++++++\n\n\n" << endl;
 	//Mostrar o resultado de todos os jogadores
-	for (int i=0; i < total_jogadores; i++) {
-		cout << jogadores[i] -> getNome() << "obteve" << jogadores[i] -> getPontos() << "pontos" << endl;
+	for (int i = 0; i < totalDeJogadores; i++) {
+		cout << todosOsJogadores[i]->getNomeDoJogador() << " obteve "
+			 << todosOsJogadores[i]->getPontuacaoTotal() << " pontos.\n\n " << endl;
 		//verificar se o jogador atual é o vencedor
-		if (jogadores[i] == ganhador) {
-			cout << jogadores[i] -> getNome() << "venceu" << endl;
+		if (todosOsJogadores[i] == jogadorQueGanhou) {
+			cout << todosOsJogadores[i]->getNomeDoJogador() << " venceu!\n\n" << endl;
 		}
 		else {
-			cout << jogadores[i] -> getNome() << "perdeu" << endl;
+			cout << todosOsJogadores[i]->getNomeDoJogador() << " perdeu!\n\n" << endl;
 		}
 	}
 
 }
 
-void Jogo::novaPartida() {
+void Jogo::proximaRodada() {
 	int i = 0;
 	cout << "____________________________________________"<< endl;
-	cout << "Partida " << partidas << endl;
+	cout << "____________________________________________"<< endl;
+	cout << "Partida " << numeroDaRodada << "\n\n" << endl;
 	
-	while (i < total_jogadores) {
+	while (i < totalDeJogadores) {
 		//Verificando se há somente um jogador jogando
-		if (jogadores[i]->getStatus() != INATIVO && totalJogando() == 1) {
-			ganhador = jogadores[i];
-			return;
+		if (todosOsJogadores[i]->getSituacaoAtual() != FORA && totalJogando() == 1) {
+			jogadorQueGanhou = todosOsJogadores[i];
+			break;
 		}
 
-		if (jogadores[i] -> jogarAgora()) {
-			jogadores[i] -> JogarDados(d1, d2);
+		if (todosOsJogadores[i]->vaiJogarAgora()) {
+			
+			todosOsJogadores[i]->jogarDados(dadoUm, dadoDois);
 
-			//verifica se o jogador alcançou o alvo
-			if (jogadores[i] -> getPontos() == Jogador::alvo) {	
-				ganhador = jogadores[i];
-				return;
+			//verifica se o jogador alcançou o objetivo.
+			if (todosOsJogadores[i]->getPontuacaoTotal() == Jogador::getObjetivo()) {	
+				jogadorQueGanhou = todosOsJogadores[i];
+				break;
 			}
 		}
 		i++;
 	}
+	cout << "____________________________________________" << endl;
+	cout << "____________________________________________" << endl;
 
-	cout << "____________________________________________"<< endl;
-
-	partidas ++;
+	numeroDaRodada++;
 }
 
-void Jogo::run() {
-	while(totalJogando() > 1 && getJogadoresAtivos() > 0 && ganhador == nullptr) {
-		novaPartida();
+void Jogo::agoraVai() {
+	while(totalJogando() > 1 && getJogadoresAtivos() > 0 && jogadorQueGanhou == nullptr) {
+		proximaRodada();
 	}
-	resultado();
+	int maiorNumero = 0;
+	if (jogadorQueGanhou == nullptr){
+		int j = 0;
+		while(j < totalDeJogadores){
+			if (todosOsJogadores[j]->getSituacaoAtual() != FORA && 
+				todosOsJogadores[j]->getPontuacaoTotal() > maiorNumero){
+				jogadorQueGanhou = todosOsJogadores[j];
+				maiorNumero = todosOsJogadores[j]->getPontuacaoTotal();
+			} 
+		j++;	
+		}
+	}
+	resultadoFinal();
 }
 
-void Jogo::addJogador(Jogador *novo_) {
-	if (total_jogadores < MAX_JOGADORES) {
-		jogadores[total_jogadores ++] = novo_;
+void Jogo::inserirJogador(Jogador *novoJogador) {
+	if (totalDeJogadores < MAXIMO_DE_JOGADORES) {
+		todosOsJogadores[totalDeJogadores++] = novoJogador;
 	}
 }
 
 int Jogo::totalJogando() {
 	//numero de jogadores jogando
-	int jogando = 0;
+	int jogandoAgora = 0;
 	//contar quantos jogadores estao jogando (status ativo ou parado)
-	for (int i = 0; i < total_jogadores; i++) {
-			if (jogadores[i] -> getStatus() == ATIVO || jogadores[i] -> getStatus() == PARADO) {
-				jogando ++;
+	for (int i = 0; i < totalDeJogadores; i++) {
+			if (todosOsJogadores[i]->getSituacaoAtual() == ATIVO ||
+				todosOsJogadores[i]->getSituacaoAtual() == INATIVO) {
+				jogandoAgora ++;
 			}
 	}
 
-	return jogando;
+	return jogandoAgora;
 }
 
-Jogo::Jogo():total_jogadores(0), partidas(0) {}
+Jogo::Jogo():totalDeJogadores(0), numeroDaRodada(0) {}
 
-Jogo::~Jogo() {}
+Jogo::~Jogo(){}

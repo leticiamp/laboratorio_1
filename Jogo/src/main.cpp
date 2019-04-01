@@ -1,6 +1,6 @@
 /*
 Disciplina: Linguagem de Programação I
-Professor: Silvio
+Professor: Silvio	
 Alunos: Letícia Moura e Odilon Júlio
 LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 ===========================================================================
@@ -12,13 +12,13 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 //int Jogador::alvo = 100;
 
 int main() {
-	Jogo teste;
+	Jogo jogoDosDados;
    
-	teste.addJogador(new Jogador("Mateus"));
-	teste.addJogador(new Jogador("Lucas"));
-	teste.addJogador(new Jogador("José"));
+	jogoDosDados.inserirJogador(new Jogador("Mateus"));
+	jogoDosDados.inserirJogador(new Jogador("Lucas"));
+	jogoDosDados.inserirJogador(new Jogador("José"));
 
-	teste.run();
+	jogoDosDados.agoraVai();
 
 	return 0;
 }

@@ -14,17 +14,15 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 using namespace std;
 
 class Dado {
-
 public:
-	Dado(); // Método construtor.
-	int jogarDados();
-	int getValor_acumulado(); // Método que mostra o valor acumulado.
-
-
+	Dado(); // Método construtor padrão.
+	~Dado(); // Método destrutor.
+	int jogueODado(); // Método de lançamento dos dados que retorna a soma dos valores do lançamento.
+	int getValorAcumulado(); // Método que mostra o valor acumulado.
 
 private:
 	int resultado;
-	int valor_acumulado;
+	int valorAcumulado;
 	// Caracterização do lançamento randômico.
 	random_device rd; 
 	default_random_engine gen;
@@ -32,4 +30,4 @@ private:
 
 };
 
-#endif
+#endif // _DADO_H_

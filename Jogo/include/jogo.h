@@ -8,30 +8,32 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 #ifndef JOGO_H
 #define JOGO_H
-
+#include <iostream>
 #include "dado.h"
 #include "jogador.h"
 
-#define MAX_JOGADORES 5
+#define MAXIMO_DE_JOGADORES 5
 
 class Jogo {
 private:
-	int total_jogadores;
-	Jogador * jogadores[MAX_JOGADORES];
-	int partidas;
-	Dado d1, d2;
-	Jogador *ganhador = nullptr;
+	int totalDeJogadores;
+	int numeroDaRodada;
+
+	Dado dadoUm, dadoDois;
+
+	Jogador *todosOsJogadores[MAXIMO_DE_JOGADORES];
+	Jogador *jogadorQueGanhou = nullptr;
 public:
 	int getJogadoresAtivos(); 
 
-	void resultado();
-	void novaPartida(); 
-	void run();
-	void addJogador(Jogador *novo_);
+	void resultadoFinal();
+	void proximaRodada(); 
+	void agoraVai();
+	void inserirJogador(Jogador *novoJogador);
 	int totalJogando(); 
 
 	Jogo();
 	~Jogo();
 };
 
-#endif
+#endif // JOGO_H

@@ -14,26 +14,29 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 using namespace std;
 
-enum Status{ATIVO, INATIVO, PARADO};
+enum Situacao{ATIVO, INATIVO, FORA};
 
 class Jogador {
 private:
-	string nome; 
-	int pontos;
-	Status status;
+	string nomeDoJogador;
+	int pontuacaoTotal;
+	Situacao situacaoAtual;
+	static int objetivo; // meta de pontos a ser atingida
 
 public:
-	string getNome();
-	int getPontos();
-	Status getStatus();
-	static int alvo; // meta de pontos a ser atingida
+	string getNomeDoJogador();
+	int getPontuacaoTotal();
+	Situacao getSituacaoAtual();
+	static int getObjetivo(){
+		return objetivo;
+	}
 
-	void JogarDados(Dado &d1, Dado &d2);
-	bool jogarAgora(); //retorna a escolha do jogador para jogar ou nao a partida
+	void jogarDados(Dado &dadoUm, Dado &dadoDois);
+	bool vaiJogarAgora(); //retorna a escolha do jogador para jogar ou nao a partida
 
 	Jogador();
-	Jogador(string nome_);
+	Jogador(string novoJogador);
 	~Jogador();
 };
 
-#endif
+#endif // JOGADOR_H

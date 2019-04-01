@@ -12,65 +12,67 @@ LABORATÓRIO I - QUESTÃO 2 - JOGO DOS DADOS
 
 using namespace std;
 
-int Jogador::alvo = 20;
+int Jogador::objetivo = 20;
 
-string Jogador::getNome() {
-	return nome;
+string Jogador::getNomeDoJogador() {
+	return nomeDoJogador;
 }
 
-int Jogador::getPontos() {
-	return pontos;
+int Jogador::getPontuacaoTotal() {
+	return pontuacaoTotal;
 }
 
-Status Jogador::getStatus() {  
-	return status;
+Situacao Jogador::getSituacaoAtual() {  
+	return situacaoAtual;
 }
-
-Jogador::Jogador(): nome("Miguel"),
-pontos(0),
-status(ATIVO){}
+/* Construtor padrão. */
+Jogador::Jogador(): nomeDoJogador("Empty Name"),
+					pontuacaoTotal(0),
+					situacaoAtual(ATIVO){}
 	
-Jogador::Jogador(string nome_):
-nome(nome_),
-pontos(0),
-status(ATIVO){}
+Jogador::Jogador(string novoJogador):
+					nomeDoJogador(novoJogador),
+					pontuacaoTotal(0),
+					situacaoAtual(ATIVO){}
 
 Jogador::~Jogador(){}
 
-void Jogador::JogarDados(Dado &d1, Dado &d2){
-	int jogada = d1.jogarDados() + d2.jogarDados();
-	pontos += jogada;
+void Jogador::jogarDados(Dado &dadoUm, Dado &dadoDois){
+	int pontosDessaJogada = 0;
+	pontosDessaJogada = dadoUm.jogueODado() + dadoDois.jogueODado();
+	pontuacaoTotal += pontosDessaJogada;
 
-	if (pontos > Jogador::alvo) {
-		status = INATIVO;
-		cout << nome << " fez " << jogada << " e passou (" << pontos << ") pontos. " << endl;
-		cout << nome << "está INATIVO" << endl;
+	if (pontuacaoTotal > Jogador::objetivo) {
+		situacaoAtual = FORA;
+		cout << nomeDoJogador << " marcou " << pontosDessaJogada << " e passou (" 
+			 << pontuacaoTotal << ") pontos. " << "\n\n"
+			 << nomeDoJogador << " está FORA!" << endl;
 	} 
 	else {
-		cout << nome << " fez " << jogada << " pontos. " << endl;
-		cout << " Total de pontos: " << pontos << endl;
+		cout << nomeDoJogador << " marcou " << pontosDessaJogada << " pontos. " << endl;
+		cout << " Total de pontos: " << pontuacaoTotal << endl;
 	}
 }
 
-bool Jogador::jogarAgora(){
-	if (status == INATIVO){
+bool Jogador::vaiJogarAgora(){
+	if (situacaoAtual == FORA){ // Está fora do jogo.
 		return false;
 	}
 
 	string escolha;
 
 	do {
-		cout << nome << ", vai jogar? (s/n): ";
+		cout << nomeDoJogador << ", vai jogar? (s/n): ";
 		cin >> escolha;
 	} while (escolha != "s" && escolha != "n");
 
 	if (escolha == "s"){
-		status = ATIVO;
+		situacaoAtual = ATIVO; // Vai jogar.
 		
 		return true;
 	}
 
-	status = PARADO;
+	situacaoAtual = INATIVO; // Não vai jogar nessa rodada.
 
 	return false;
 }
